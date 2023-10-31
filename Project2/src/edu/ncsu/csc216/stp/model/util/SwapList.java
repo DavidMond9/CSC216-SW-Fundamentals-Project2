@@ -1,6 +1,6 @@
 package edu.ncsu.csc216.stp.model.util;
 
-public class SwapList<E> implements ISwapList {
+public class SwapList<E> implements ISwapList<E> {
 	private final static int INITIAL_CAPACITY = 10;
 	private E[] list;
 	private int size;
@@ -14,8 +14,9 @@ public class SwapList<E> implements ISwapList {
 	private void checkCapacity(int i) {
 		
 	}
-	public void remove(int i) {
-		
+	public E remove(int i) {
+		E x = (E)"a";
+		return x;
 	}
 	private void checkIndex(int i) {
 		
@@ -32,8 +33,9 @@ public class SwapList<E> implements ISwapList {
 	public void moveToBack(int i) {
 		
 	}
-	public int get(int i) {
-		return 0;
+	public E get(int i) {
+		E x = (E)"a";
+		return x;
 	}
 	public int size() {
 		return 0;

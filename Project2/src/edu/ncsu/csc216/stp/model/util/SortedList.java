@@ -1,21 +1,23 @@
 package edu.ncsu.csc216.stp.model.util;
 
-public class SortedList<E> implements ISortedList extends Comparable {
+public class SortedList<E> implements ISortedList<E extends Comparable<E>> {
 	private int size;
 	
 	public SortedList() {
 		
 	}
 
-	public void remove(int i) {
-		
+	public E remove(int i) {
+		E x = (E)"a";
+		return x;
 	}
 	private void checkIndex(int idx) {
 		
 	}
 	
-	public int get(int i) {
-		return 0;
+	public E get(int i) {
+		E x = (E)"a";
+		return x;
 	}
 	public int size() {
 		return 0;
@@ -27,13 +29,11 @@ public class SortedList<E> implements ISortedList extends Comparable {
 			
 		}
 	}
-	@Override
-	public void add(Object list) {
-		list = (E)list;
+	
+	public void add(E list) {
 	}
-	@Override
-	public boolean contains(Object list) {
-		list = (E)list;
+	
+	public boolean contains(E list) {
 		return false;
 	}
 }
