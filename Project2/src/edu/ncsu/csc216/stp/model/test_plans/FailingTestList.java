@@ -4,12 +4,11 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
 
 public class FailingTestList extends AbstractTestPlan {
 	
-	public FailingTestList(String planName) {
-		super(planName);
-		// TODO Auto-generated constructor stub
-	}
 	public static final String FAILING_TEST_LIST_NAME = "Failing Tests";
 	
+	public FailingTestList() {
+		super(FAILING_TEST_LIST_NAME);
+	}
 	
 	public void addTestCase(TestCase testcase) {
 		

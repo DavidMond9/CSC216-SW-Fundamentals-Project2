@@ -22,7 +22,7 @@ public class TestPlanWriter {
 	 * @param file File input for writing.
 	 * @param list List of test plans to write out.
 	 */
-	public static void writeTestPlanToFile(File file, ISortedList<TestPlan> list) {
+	public static void writeTestPlanFile(File file, ISortedList<TestPlan> list) {
 		
 	}
 }

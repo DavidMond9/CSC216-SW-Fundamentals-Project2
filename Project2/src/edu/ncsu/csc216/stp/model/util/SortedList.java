@@ -6,19 +6,14 @@ public class SortedList<E> implements ISortedList extends Comparable {
 	public SortedList() {
 		
 	}
-	
-	public void add(E list) {
-		
-	}
+
 	public void remove(int i) {
 		
 	}
 	private void checkIndex(int idx) {
 		
 	}
-	public boolean contains(E list) {
-		return false;
-	}
+	
 	public int get(int i) {
 		return 0;
 	}
@@ -31,5 +26,14 @@ public class SortedList<E> implements ISortedList extends Comparable {
 		public ListNode(E list, ListNode node) {
 			
 		}
+	}
+	@Override
+	public void add(Object list) {
+		list = (E)list;
+	}
+	@Override
+	public boolean contains(Object list) {
+		list = (E)list;
+		return false;
 	}
 }

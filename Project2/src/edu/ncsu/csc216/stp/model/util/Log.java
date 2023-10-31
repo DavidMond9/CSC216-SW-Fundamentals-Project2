@@ -21,5 +21,6 @@ public class Log<E> implements ILog {
 		return 0;
 	}
 
+
 	
 }
