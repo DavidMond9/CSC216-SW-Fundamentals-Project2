@@ -6,7 +6,7 @@ public class TestResult {
 	private boolean passing;
 	private String actualResults;
 	
-	public TestResult(boolean pass, String results) {
+	public TestResult(boolean passing, String actualResults) {
 		
 	}
 

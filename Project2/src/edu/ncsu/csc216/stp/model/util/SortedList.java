@@ -1,6 +1,6 @@
 package edu.ncsu.csc216.stp.model.util;
 
-public class SortedList<E> {
+public class SortedList<E> implements ISortedList extends Comparable {
 	private int size;
 	
 	public SortedList() {
@@ -19,8 +19,8 @@ public class SortedList<E> {
 	public boolean contains(E list) {
 		return false;
 	}
-	public void get(int i) {
-		
+	public int get(int i) {
+		return 0;
 	}
 	public int size() {
 		return 0;

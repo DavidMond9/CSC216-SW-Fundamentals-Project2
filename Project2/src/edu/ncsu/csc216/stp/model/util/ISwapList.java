@@ -7,6 +7,6 @@ public interface ISwapList<E> {
 	public void moveDown(int i);
 	public void moveToFront(int i);
 	public void moveToBack(int i);
-	public void get(int i);
+	public int get(int i);
 	public int size();
 }
