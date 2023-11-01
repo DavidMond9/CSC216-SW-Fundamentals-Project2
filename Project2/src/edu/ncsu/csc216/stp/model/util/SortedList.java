@@ -1,8 +1,15 @@
 package edu.ncsu.csc216.stp.model.util;
 
-public class SortedList<E> implements ISortedList<E extends Comparable<E>> {
+public class SortedList<E extends Comparable <E>> implements ISortedList {
+	
+	/** Number of elements in the list */
 	private int size;
 	
+	
+	
+	/** 
+	 * 
+	 */
 	public SortedList() {
 		
 	}
@@ -30,10 +37,18 @@ public class SortedList<E> implements ISortedList<E extends Comparable<E>> {
 		}
 	}
 	
-	public void add(E list) {
+	
+	public void add(E element) {
+		if (element == null) {
+			throw new IllegalArgumentException();
+		}
+		
+		
 	}
 	
-	public boolean contains(E list) {
+	public boolean contains(E element) {
+		
 		return false;
 	}
 }
+

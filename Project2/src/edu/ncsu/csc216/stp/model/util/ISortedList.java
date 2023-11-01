@@ -13,8 +13,6 @@ public interface ISortedList<E extends Comparable<E>> {
 	/**
 	 * Adds the element to the list in sorted order.
 	 * @param element element to add
-	 * @throws NullPointerException if element is null
-	 * @throws IllegalArgumentException if element cannot be added 
 	 */
 	void add(E element);
 	
@@ -23,8 +21,6 @@ public interface ISortedList<E extends Comparable<E>> {
 	 * removed from the list.
 	 * @param idx index to remove element from
 	 * @return element at given index
-	 * @throws IndexOutOfBoundsException if the idx is out of bounds
-	 * 		for the list
 	 */
 	E remove(int idx);
 	
@@ -39,8 +35,6 @@ public interface ISortedList<E extends Comparable<E>> {
 	 * Returns the element at the given index.
 	 * @param idx index of the element to retrieve
 	 * @return element at the given index
-	 * @throws IndexOutOfBoundsException if the idx is out of bounds
-	 * 		for the list
 	 */
 	E get(int idx);
 	

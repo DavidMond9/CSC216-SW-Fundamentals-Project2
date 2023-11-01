@@ -13,7 +13,6 @@ public interface ILog<E> {
 	/**
 	 * Adds the element to the end of the list.
 	 * @param element element to add
-	 * @throws NullPointerException if element is null 
 	 */
 	void add(E element);
 	
@@ -21,8 +20,6 @@ public interface ILog<E> {
 	 * Returns the element at the given index.
 	 * @param idx index of the element to retrieve
 	 * @return element at the given index
-	 * @throws IndexOutOfBoundsException if the idx is out of bounds
-	 * 		for the list
 	 */
 	E get(int idx);
 	
