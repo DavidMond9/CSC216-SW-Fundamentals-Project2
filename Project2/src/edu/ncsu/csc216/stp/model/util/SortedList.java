@@ -1,6 +1,6 @@
 package edu.ncsu.csc216.stp.model.util;
 
-public class SortedList<E extends Comparable <E>> implements ISortedList {
+public class SortedList<E extends Comparable <E>> implements ISortedList<E> {
 	
 	/** Number of elements in the list */
 	private int size;
