@@ -7,6 +7,8 @@ import edu.ncsu.csc216.stp.model.util.ISortedList;
 
 /**
  * TestPlanWriter class writes a test plan to a file.
+ * @author Gavin Douglas
+ * @author David Mond
  */
 public class TestPlanWriter {
 	

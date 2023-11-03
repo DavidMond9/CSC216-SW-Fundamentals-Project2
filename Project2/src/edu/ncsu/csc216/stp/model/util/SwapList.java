@@ -1,5 +1,9 @@
 package edu.ncsu.csc216.stp.model.util;
 
+/**
+ * SwapList is a list of elements with a generic type that can swap the order of it's elements
+ * @param <E> Generic type of the elements
+ */
 public class SwapList<E> implements ISwapList<E> {
 	
 	/** Initial capacity of the list */
@@ -12,82 +16,96 @@ public class SwapList<E> implements ISwapList<E> {
 	private int size;
 	
 	/**
-	 * 
+	 * Constructor for SwapList
 	 */
 	public SwapList() {
 		
 	}
 	
 	/**
-	 * 
+	 * Adds an element to the list
+	 * @param element element to be added
 	 */
-	public void add(E list) {
+	public void add(E element) {
+		size = list.length;
+		size = INITIAL_CAPACITY;
+	}
+	
+	/**
+	 * checks if the given index is within the capacity of the list
+	 * @param idx index to be checked
+	 */
+	private void checkCapacity(int idx) {
 		
 	}
 	
 	/**
-	 * 
-	 * @param i
+	 * Removes the element at the given index
+	 * @param idx index of the element to remove
+	 * @return the removed element
 	 */
-	private void checkCapacity(int i) {
+	public E remove(int idx) {
+		@SuppressWarnings("unchecked")
+		E x = (E)"a";
+		checkIndex(size);
+		checkCapacity(idx);
+		return x;
+	}
+	
+	/**
+	 * Checks the index of the list
+	 * @param idx index to be checked
+	 */
+	private void checkIndex(int idx) {
 		
 	}
 	
 	/**
-	 * 
+	 * Moves the element at the given index one spot forward in the list
+	 * @param idx index of the element to move
 	 */
-	public E remove(int i) {
+	public void moveUp(int idx) {
+		
+	}
+	
+	/**
+	 * Moves the element at the given index one spot backward in the list
+	 * @param idx index of the element to move
+	 */
+	public void moveDown(int idx) {
+		
+	}
+	
+	/**
+	 * Moves the element at the given index to the front of the list
+	 * @param idx index of the element to move
+	 */
+	public void moveToFront(int idx) {
+		
+	}
+	
+	/**
+	 * Moves the element at the given index to the back of the list
+	 * @param idx index of the element to move
+	 */
+	public void moveToBack(int idx) {
+		
+	}
+	
+	/**
+	 * Gets the element at the given index
+	 * @param idx index of the element to get
+	 * @return the element at the given index
+	 */
+	public E get(int idx) {
 		@SuppressWarnings("unchecked")
 		E x = (E)"a";
 		return x;
 	}
 	
 	/**
-	 * 
-	 * @param i
-	 */
-	private void checkIndex(int i) {
-		
-	}
-	
-	/**
-	 * 
-	 */
-	public void moveUp(int i) {
-		
-	}
-	
-	/**
-	 * 
-	 */
-	public void moveDown(int i) {
-		
-	}
-	
-	/**
-	 * 
-	 */
-	public void moveToFront(int i) {
-		
-	}
-	
-	/**
-	 * 
-	 */
-	public void moveToBack(int i) {
-		
-	}
-	
-	/**
-	 * 
-	 */
-	public E get(int i) {
-		E x = (E)"a";
-		return x;
-	}
-	
-	/**
-	 * 
+	 * Gets the number of elements in the list
+	 * @return the number of elements in the list
 	 */
 	public int size() {
 		return 0;

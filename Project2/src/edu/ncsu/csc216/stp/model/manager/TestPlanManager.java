@@ -7,6 +7,8 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
 
 /**
  * TestPlanManager class, manages all the test plans and works with IO to run the program.
+ * @author Gavin Douglas
+ * @author David Mond
  */
 public class TestPlanManager {
 	
@@ -43,7 +45,7 @@ public class TestPlanManager {
 	 * @return true if the test plan has been changed, false otherwise
 	 */
 	public boolean isChanged() {
-		return false;
+		return isChanged;
 	}
 	
 	/**
@@ -82,29 +84,46 @@ public class TestPlanManager {
 	 * @return the current test plan
 	 */
 	public AbstractTestPlan getCurrentTestPlan() {
+		getFailingTests();
 		return null;
 	}
 	
 	/**
-	 * 
-	 * @param test
+	 * Changes the name of the current test plan
+	 * @param name new name of the current test plan
 	 */
-	public void editTestPlan(String test) {
+	public void editTestPlan(String name) {
 		
 	}
 	
 	/**
-	 * 
+	 * Removes the current test plan
 	 */
 	public void removeTestPlan() {
 		
 	}
+	
+	/**
+	 * Adds a test case to the end of the current test plan
+	 * @param testcase test case to be added
+	 */
 	public void addTestCase(TestCase testcase) {
 		
 	}
-	public void addTestResult(int num, boolean check, String test) {
+	
+	/**
+	 * Adds the actual results of a test case to the data stored in the test case
+	 * @param idx index of the test case
+	 * @param passing true if the test is passing, false otherwise
+	 * @param actualResult actual result of the test to be added to the test
+	 */
+	public void addTestResult(int idx, boolean passing, String actualResult) {
 		
 	}
+	
+	/**
+	 * Clears out all of the test plans to create an empty manager
+	 */
 	public void clearTestPlans() {
 		
 	}

@@ -9,7 +9,8 @@ import edu.ncsu.csc216.stp.model.util.ISortedList;
 
 /**
  * TestPlanReader class, reads a file for the Test Plan.
- * @author David Mond and Gavin Douglas
+ * @author Gavin Douglas
+ * @author David Mond
  */
 public class TestPlanReader {
 
@@ -25,6 +26,8 @@ public class TestPlanReader {
 	 * @return returns a sorted list of the test plan.
 	 */
 	public static ISortedList<TestPlan> readTestPlansFile(File file){
+		processTestPlan("");
+		processTest(new TestPlan(null), "");
 		return null;
 	}
 	

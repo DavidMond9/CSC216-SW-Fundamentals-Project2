@@ -3,37 +3,96 @@ package edu.ncsu.csc216.stp.model.test_plans;
 import edu.ncsu.csc216.stp.model.tests.TestCase;
 import edu.ncsu.csc216.stp.model.util.ISwapList;
 
+/**
+ * Abstract test plan is an abstract class on top of the test plan hierarchy
+ * @author Gavin Douglas
+ * @author David Mond
+ */
 public abstract class AbstractTestPlan {
+	
+	/** Name of the test plan */
 	private String testPlanName;
 	
+	/**
+	 * Constructor for the abstract test plan
+	 * @param planName name of the test plan
+	 */
 	public AbstractTestPlan(String planName) {
 		
 	}
 	
+	/**
+	 * Sets the name for the test plan
+	 * @param name name of the test plan
+	 */
 	public void setTestPlanName(String name) {
 		
 	}
+	
+	/**
+	 * Gets the name of the test plan
+	 * @return the name of the test plan
+	 */
 	public String getTestPlanName() {
 		return null;
 	}
+	
+	/**
+	 * Gets a list of test cases
+	 * @return A SwapList of test cases
+	 */
 	public ISwapList<TestCase> getTestCases() {
 		return null;
 	}
+	
+	/**
+	 * Adds a test case to the plan
+	 * @param testcase test case to be added
+	 */
 	public void addTestCase(TestCase testcase) {
 		
 	}
-	public TestCase removeTestCase(int num) {
+	
+	/**
+	 * Removes a test case form the plan
+	 * @param idx index of the test case
+	 * @return the removed test case
+	 */
+	public TestCase removeTestCase(int idx) {
 		return null;
 	}
-	public TestCase getTestCase(int num) {
+	
+	/**
+	 * Gets the test case at the index
+	 * @param idx index of the test csae
+	 * @return the selected test case
+	 */
+	public TestCase getTestCase(int idx) {
 		return null;
 	}
+	
+	/**
+	 * Gets the number of tests that are failing
+	 * @return the number of failing tests
+	 */
 	public int getNumberOfFailingTests() {
 		return 0;
 	}
-	public void addTestResult(int num, boolean result, String name) {
+	
+	/**
+	 * Adds the actual results of a test to the data stored in that test
+	 * @param idx index of the test case
+	 * @param passing true if the test is passing, false otherwise
+	 * @param actualResults actual results of the test case
+	 */
+	public void addTestResult(int idx, boolean passing, String actualResults) {
 		
 	}
+	
+	/**
+	 * Gets the data stored in a test case as a 2D array
+	 * @return a 2D array with the data stored in the test cases
+	 */
 	public abstract String[][] getTestCasesAsArray();
 
 	@Override
