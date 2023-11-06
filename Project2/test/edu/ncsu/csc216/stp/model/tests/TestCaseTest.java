@@ -20,7 +20,7 @@ public class TestCaseTest {
 		assertEquals("description", test.getTestDescription());
 		assertEquals("exp", test.getExpectedResults());
 		assertEquals(test.getTestPlan(), null);
-		assertEquals(test.getActualResultsLog(), null);
+		assertEquals(test.getActualResultsLog(), "");
 		
 		
 		Exception e1 = assertThrows(IllegalArgumentException.class, 
@@ -45,7 +45,7 @@ public class TestCaseTest {
 		TestCase test = new TestCase("1", "type", "description", "exp");
 		test.addTestResult(false, "fail");
 		assertFalse(test.isTestCasePassing());
-		assertEquals("-fail\n", test.getActualResultsLog());
+		assertEquals("- FAIL: fail\n", test.getActualResultsLog());
 	}
 	
 	@Test

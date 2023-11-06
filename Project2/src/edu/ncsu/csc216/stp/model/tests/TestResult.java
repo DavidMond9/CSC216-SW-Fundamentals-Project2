@@ -63,7 +63,11 @@ public class TestResult {
 
 	@Override
 	public String toString() {
-		return "TestResult [passing=" + passing + ", actualResults=" + actualResults + "]";
+		if (passing == true) {
+			return PASS + ": " + actualResults;
+		}
+		
+		return FAIL + ": " + actualResults;
 	}
 	
 }
