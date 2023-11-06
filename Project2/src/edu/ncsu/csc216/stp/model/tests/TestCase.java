@@ -43,6 +43,7 @@ public class TestCase {
 		setTestType(type);
 		setTestDescription(description);
 		setExpectedResults(expectedResults);
+		testResults = new Log<TestResult>();
 	}
 
 	/**

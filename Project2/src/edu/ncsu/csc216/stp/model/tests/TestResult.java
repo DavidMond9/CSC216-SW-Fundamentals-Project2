@@ -25,7 +25,8 @@ public class TestResult {
 	 * @param actualResults actual results of the test
 	 */
 	public TestResult(boolean passing, String actualResults) {
-		
+		setPassing(passing);
+		setActualResults(actualResults);
 	}
 
 	/**
