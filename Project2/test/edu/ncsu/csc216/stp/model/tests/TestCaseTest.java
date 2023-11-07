@@ -42,6 +42,7 @@ public class TestCaseTest {
 	
 	@Test
 	void testAddTestResult() {
+
 		TestCase test = new TestCase("1", "type", "description", "exp");
 		test.addTestResult(false, "fail");
 		assertFalse(test.isTestCasePassing());
@@ -74,6 +75,6 @@ public class TestCaseTest {
 		assertEquals("PASS", test.getStatus());
 		test.addTestResult(false, "fail again");
 		assertEquals("FAIL", test.getStatus());
-	}
 
+	}
 }
