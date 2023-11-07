@@ -20,18 +20,27 @@ public class Log<E> implements ILog<E> {
 	/**
 	 * Constructor for Log
 	 */
+	@SuppressWarnings("unchecked")
 	public Log() {
-		log[0] = null;
-		size = INIT_CAPACITY;
-		size += size;
+		log = (E[]) new Object[INIT_CAPACITY];
+		size = 0;
 	}
 	
 	/**
 	 * Adds an element to the end of the list
 	 * @param element element to be added
 	 */
+	@SuppressWarnings("unchecked")
 	public void add(E element) {
-		
+		if (size >= log.length - 1) {
+			E[] tempList = log;
+			log = (E[]) new Object[log.length * 2];
+			for (int i = 0; i < tempList.length - 1; i++) {
+				log[i] = tempList[i];
+			}
+		}
+		log[size] = element;
+		size++;
 	}
 	
 	/**
@@ -40,9 +49,10 @@ public class Log<E> implements ILog<E> {
 	 * @return the element at the given index
 	 */
 	public E get(int idx) {
-		@SuppressWarnings("unchecked")
-		E x = (E)"a";
-		return x;
+		if (idx < 0 || idx >= size) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		return log[idx];
 	}
 	
 	/**
@@ -50,10 +60,8 @@ public class Log<E> implements ILog<E> {
 	 * @return the number of elements in the array
 	 */
 	public int size() {
-		return 0;
+		return size;
 	}
-
-
 
 	
 }
