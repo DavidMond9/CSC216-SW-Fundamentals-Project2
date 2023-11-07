@@ -6,7 +6,6 @@ public class TestCaseTest {
 	
 	@Test
 	void testAddTestResult() {
-		fail();
+		fail();	
 	}
-
 }
