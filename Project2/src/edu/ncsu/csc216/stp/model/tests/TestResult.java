@@ -63,7 +63,7 @@ public class TestResult {
 
 	@Override
 	public String toString() {
-		if (passing == true) {
+		if (passing) {
 			return PASS + ": " + actualResults;
 		}
 		

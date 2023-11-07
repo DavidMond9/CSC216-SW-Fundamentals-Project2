@@ -59,7 +59,21 @@ public class TestCaseTest {
 	
 	@Test
 	void testToString() {
-		
+		TestCase test = new TestCase("1", "type", "description", "exp");
+		TestPlan testPlan = new TestPlan("test");
+		test.setTestPlan(testPlan);
+		test.addTestResult(false, "fail");
+		assertEquals("# 1,type\n* description\n- FAIL: fail\n", test.toString());
+	}
+	
+	@Test
+	void testGetStatus() {
+		TestCase test = new TestCase("1", "type", "description", "exp");
+		test.addTestResult(false, "fail");
+		test.addTestResult(true, "pass");
+		assertEquals("PASS", test.getStatus());
+		test.addTestResult(false, "fail again");
+		assertEquals("FAIL", test.getStatus());
 	}
 
 }
