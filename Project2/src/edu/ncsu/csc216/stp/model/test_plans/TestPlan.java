@@ -1,6 +1,7 @@
 package edu.ncsu.csc216.stp.model.test_plans;
 
 import edu.ncsu.csc216.stp.model.tests.TestCase;
+import edu.ncsu.csc216.stp.model.util.ISwapList;
 
 /**
  * A test plan holds a list of test cases that are passing or failing
@@ -11,11 +12,11 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 
 	/**
 	 * Constructor for the test plan
-	 * @param planName name of the test plan
+	 * @param testPlanName name of the test plan
 	 */
-	public TestPlan(String planName) {
-		super(planName);
-		// TODO Auto-generated constructor stub
+	public TestPlan(String testPlanName) {
+		super(testPlanName);
+		
 	}
 	
 	/**
@@ -23,7 +24,16 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	 * @return a 2D array of test cases
 	 */
 	public String[][] getTestCasesAsArray() {
-		return null;
+		ISwapList<TestCase> testList = this.getTestCases();
+		String[][] res = new String[testList.size()][3];
+		
+		for(int i = 0; i < testList.size(); i++) {
+			res[i][0] = this.getTestCase(i).getTestCaseId();
+			res[i][1] = this.getTestCase(i).getTestType();
+			res[i][2] = this.getTestCase(i).getStatus();
+		}
+		
+		return res;
 	}
 	
 	/**
@@ -31,7 +41,8 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	 * @param testcase test case to be added
 	 */
 	public void addTestCase(TestCase testcase) {
-		
+		super.addTestCase(testcase);
+		testcase.setTestPlan(this);
 	}
 	
 	/**
@@ -40,6 +51,7 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	 * @return the value of the compareTo method
 	 */
 	public int compareTo(TestPlan plan) {
-		return 0;
+		return this.getTestPlanName().toLowerCase()
+				.compareTo(plan.getTestPlanName().toLowerCase());
 	}
 }

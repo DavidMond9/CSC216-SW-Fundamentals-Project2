@@ -1,7 +1,7 @@
 package edu.ncsu.csc216.stp.model.test_plans;
 
+import edu.ncsu.csc216.stp.model.manager.TestPlanManager;
 import edu.ncsu.csc216.stp.model.tests.TestCase;
-import edu.ncsu.csc216.stp.model.tests.TestResult;
 import edu.ncsu.csc216.stp.model.util.ISwapList;
 import edu.ncsu.csc216.stp.model.util.SwapList;
 
@@ -15,9 +15,13 @@ public abstract class AbstractTestPlan {
 	/** Name of the test plan */
 	private String testPlanName;
 	/**
-	 * ISwapList of test case.
+	 * TestPlan for the current plan.
 	 */
-	private SwapList<TestCase> testList;
+	private TestPlanManager currentPlan;
+	/**
+	 * SwapList of test cases for the current test cases.
+	 */
+	private ISwapList<TestCase> testList;
 	/**
 	 * Constructor for the abstract test plan
 	 * @param planName name of the test plan
@@ -32,9 +36,13 @@ public abstract class AbstractTestPlan {
 	 * @param name name of the test plan
 	 */
 	public void setTestPlanName(String name) {
-		if(name == null || name == "") {
+		if(name == null || "".equals(name)) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
+		if(name == FailingTestList.FAILING_TEST_LIST_NAME) {
+			throw new IllegalArgumentException("Invalid name.");
+		}
+		
 		testPlanName = name;
 	}
 	
@@ -59,8 +67,7 @@ public abstract class AbstractTestPlan {
 	 * @param testcase test case to be added
 	 */
 	public void addTestCase(TestCase testcase) {
-		testList.add(testcase);
-		
+		testList.add(testcase);		
 	}
 	
 	/**
@@ -79,7 +86,7 @@ public abstract class AbstractTestPlan {
 	 * @return the selected test case
 	 */
 	public TestCase getTestCase(int idx) {
-		return null;
+		return testList.get(idx);
 	}
 	
 	/**
