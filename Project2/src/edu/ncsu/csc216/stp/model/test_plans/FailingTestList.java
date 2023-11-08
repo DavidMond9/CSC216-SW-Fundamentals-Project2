@@ -1,6 +1,8 @@
 package edu.ncsu.csc216.stp.model.test_plans;
 
+import edu.ncsu.csc216.stp.model.manager.TestPlanManager;
 import edu.ncsu.csc216.stp.model.tests.TestCase;
+import edu.ncsu.csc216.stp.model.util.ISwapList;
 
 /**
  * Failing test list represents a list of only the failing tests for one test plan
@@ -11,6 +13,10 @@ public class FailingTestList extends AbstractTestPlan {
 	
 	/** Name of the failing test list */
 	public static final String FAILING_TEST_LIST_NAME = "Failing Tests";
+	/**
+	 * Test list for manager.
+	 */
+	private TestPlanManager failingTestList;
 	
 	/**
 	 * Constructor for the failing test list
@@ -24,7 +30,10 @@ public class FailingTestList extends AbstractTestPlan {
 	 * @param testcase test case to be added
 	 */
 	public void addTestCase(TestCase testcase) {
-		
+		if(testcase.isTestCasePassing()) {
+			throw new IllegalArgumentException("Cannot add passing test case.");
+		}
+		super.addTestCase(testcase);
 	}
 	
 	/**
@@ -32,7 +41,10 @@ public class FailingTestList extends AbstractTestPlan {
 	 * @param name New name of the test plan
 	 */
 	public void setTestPlanName(String name) {
-		
+		if(!name.toLowerCase().equals(FAILING_TEST_LIST_NAME)) {
+			throw new IllegalArgumentException("The Failing Tests list cannot be edited.");
+		}
+		super.setTestPlanName(name);
 	}
 	
 	/**
@@ -44,9 +56,9 @@ public class FailingTestList extends AbstractTestPlan {
 	}
 	
 	/**
-	 * Clears all of the failing tests from the test plan
+	 * Clears all of TestCases from the test plan manager
 	 */
 	public void clearTests() {
-		
+		failingTestList.clearTestPlans();		
 	}
 }
