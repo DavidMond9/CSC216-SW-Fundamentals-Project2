@@ -191,7 +191,7 @@ public class TestCase {
 	@Override
 	public String toString() {
 		String test = "";
-		test += "# " + getTestCaseId() + "," + getTestType() + "\n* " + getTestDescription() + "\n* " + getActualResultsLog() + "\n";
+		test += "# " + getTestCaseId() + "," + getTestType() + "\n* " + getTestDescription() + "\n" + getActualResultsLog();
 		return test;
 	}
 
