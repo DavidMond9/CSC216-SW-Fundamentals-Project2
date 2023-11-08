@@ -42,10 +42,6 @@ public class TestCaseTest {
 	
 	@Test
 	void testAddTestResult() {
-<<<<<<< HEAD
-		fail();	
-=======
->>>>>>> branch 'main' of https://github.ncsu.edu/engr-csc216-fall2023/csc216-P2-T-025.git
 
 		TestCase test = new TestCase("1", "type", "description", "exp");
 		test.addTestResult(false, "fail");
@@ -64,9 +60,7 @@ public class TestCaseTest {
 	
 	@Test
 	void testToString() {
-<<<<<<< HEAD
-		
-=======
+
 		TestCase test = new TestCase("1", "type", "description", "exp");
 		TestPlan testPlan = new TestPlan("test");
 		test.setTestPlan(testPlan);
@@ -83,6 +77,5 @@ public class TestCaseTest {
 		test.addTestResult(false, "fail again");
 		assertEquals("FAIL", test.getStatus());
 
->>>>>>> branch 'main' of https://github.ncsu.edu/engr-csc216-fall2023/csc216-P2-T-025.git
 	}
 }

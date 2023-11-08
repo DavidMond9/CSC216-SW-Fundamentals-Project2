@@ -1,7 +1,9 @@
 package edu.ncsu.csc216.stp.model.test_plans;
 
 import edu.ncsu.csc216.stp.model.tests.TestCase;
+import edu.ncsu.csc216.stp.model.tests.TestResult;
 import edu.ncsu.csc216.stp.model.util.ISwapList;
+import edu.ncsu.csc216.stp.model.util.SwapList;
 
 /**
  * Abstract test plan is an abstract class on top of the test plan hierarchy
@@ -12,13 +14,17 @@ public abstract class AbstractTestPlan {
 	
 	/** Name of the test plan */
 	private String testPlanName;
-	
+	/**
+	 * ISwapList of test case.
+	 */
+	private SwapList<TestCase> testList;
 	/**
 	 * Constructor for the abstract test plan
 	 * @param planName name of the test plan
 	 */
 	public AbstractTestPlan(String planName) {
-		
+		setTestPlanName(planName);
+		testList = new SwapList<TestCase>();
 	}
 	
 	/**
@@ -26,7 +32,10 @@ public abstract class AbstractTestPlan {
 	 * @param name name of the test plan
 	 */
 	public void setTestPlanName(String name) {
-		
+		if(name == null || name == "") {
+			throw new IllegalArgumentException("Invalid name.");
+		}
+		testPlanName = name;
 	}
 	
 	/**
@@ -34,7 +43,7 @@ public abstract class AbstractTestPlan {
 	 * @return the name of the test plan
 	 */
 	public String getTestPlanName() {
-		return null;
+		return testPlanName;
 	}
 	
 	/**
@@ -50,6 +59,7 @@ public abstract class AbstractTestPlan {
 	 * @param testcase test case to be added
 	 */
 	public void addTestCase(TestCase testcase) {
+		testList.add(testcase);
 		
 	}
 	
@@ -59,7 +69,8 @@ public abstract class AbstractTestPlan {
 	 * @return the removed test case
 	 */
 	public TestCase removeTestCase(int idx) {
-		return null;
+		TestCase test = testList.remove(idx);
+		return test;
 	}
 	
 	/**
@@ -76,7 +87,13 @@ public abstract class AbstractTestPlan {
 	 * @return the number of failing tests
 	 */
 	public int getNumberOfFailingTests() {
-		return 0;
+		int count = 0;
+		for(int i = 0; i < testList.size(); i++) {
+			if(!testList.get(i).isTestCasePassing()) {
+				count++;
+			}
+		}
+		return count;
 	}
 	
 	/**
@@ -86,7 +103,8 @@ public abstract class AbstractTestPlan {
 	 * @param actualResults actual results of the test case
 	 */
 	public void addTestResult(int idx, boolean passing, String actualResults) {
-		
+		testList.get(idx).addTestResult(passing, actualResults);
+
 	}
 	
 	/**
