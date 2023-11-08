@@ -76,9 +76,5 @@ public class TestCaseTest {
 		assertEquals("PASS", test.getStatus());
 		test.addTestResult(false, "fail again");
 		assertEquals("FAIL", test.getStatus());
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'main' of https://github.ncsu.edu/engr-csc216-fall2023/csc216-P2-T-025.git
 	}
 }
