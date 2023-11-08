@@ -42,9 +42,8 @@ public class TestCaseTest {
 	
 	@Test
 	void testAddTestResult() {
-<<<<<<< HEAD
 		fail();	
-=======
+
 		TestCase test = new TestCase("1", "type", "description", "exp");
 		test.addTestResult(false, "fail");
 		assertFalse(test.isTestCasePassing());
@@ -63,6 +62,5 @@ public class TestCaseTest {
 	@Test
 	void testToString() {
 		
->>>>>>> branch 'main' of https://github.ncsu.edu/engr-csc216-fall2023/csc216-P2-T-025.git
 	}
 }
