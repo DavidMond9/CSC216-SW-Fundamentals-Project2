@@ -11,11 +11,15 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	/** Number of elements in the list */
 	private int size;
 	
+	/** First Node in the list */
+	private ListNode front;
+	
 	/** 
 	 * Constructor for SortedList
 	 */
 	public SortedList() {
-		size += size;
+		this.front = null;
+		this.size = 0;
 	}
 
 	/**
@@ -25,9 +29,35 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 */
 	public E remove(int idx) {
 		checkIndex(idx);
-		@SuppressWarnings("unchecked")
-		E x = (E)"a";
-		return x;
+		if (idx < 0 || idx > size - 1) {
+			throw new IndexOutOfBoundsException();
+		}
+		
+		ListNode current = null;
+		ListNode remove = null;
+		
+		if (idx == 0) {
+			current = front;
+			front = front.next;
+			return current.data;
+			
+		} else {
+			current = front;
+			for (int i = 0; i < idx - 1; i++) {
+				current = current.next;
+			}
+			
+			remove = current.next;
+			if (idx == size - 1) {
+				current.next = null;
+			} else {
+				current.next = current.next.next;
+			}
+			
+			remove.next = null;
+			size--;
+			return remove.data;
+		}		
 	}
 	
 	/**
@@ -35,7 +65,18 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 * @param idx index to check
 	 */
 	private void checkIndex(int idx) {
+		if (idx < 0 || idx >= size) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
 		
+		ListNode current = front;
+		for (int i = 0; i < idx - 1; i++) {
+			current = front.next;
+		}
+		
+		if (current.next.data == null) {
+			throw new IllegalArgumentException();
+		}
 	}
 	
 	/**
@@ -44,9 +85,20 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 * @return the element at the given index
 	 */
 	public E get(int idx) {
-		@SuppressWarnings("unchecked")
-		E x = (E)"a";
-		return x;
+		
+		if (idx < 0 || idx >= size) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
+		if (idx == 0) {
+			return front.data;
+		}
+		ListNode current = front;
+		
+		for (int i = 0; i < idx - 1; i++) {
+			current = current.next;
+		}
+		
+		return current.next.data;
 	}
 	
 	/**
@@ -54,39 +106,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 * @return the number of elements in the list
 	 */
 	public int size() {
-		return 0;
-	}
-	
-	/**
-	 * Represents a node in the SortedList
-	 * @author Gavin Douglas
-	 * @author David Mond
-	 */
-	public class ListNode {
-		
-		/**
-		 * Data stored in the node
-		 */
-		public E data;
-		
-		/**
-		 * First node in the list
-		 */
-		private ListNode front;
-		
-		/**
-		 * Next node in the list
-		 */
-		public ListNode next;
-		
-		/**
-		 * Constructor for ListNode
-		 * @param data in the node
-		 * @param front first node in the list
-		 */
-		public ListNode(E data, ListNode front) {
-			System.out.println(this.front);
-		}
+		return size;
 	}
 	
 	/**
@@ -99,6 +119,8 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 		}
 		
 		
+		
+		
 	}
 	
 	/**
@@ -108,7 +130,38 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 */
 	public boolean contains(E element) {
 		
+		ListNode current = front;
+		for (int i = 0; i < size; i++) {
+			if (element.equals(current.data)) {
+				return true;
+			}
+		}
+		
 		return false;
+	}
+	
+	/**
+	 * Represents a node in the SortedList
+	 * @author Gavin Douglas
+	 * @author David Mond
+	 */
+	private class ListNode {
+		
+		/** The data in the node */
+		E data;
+		
+		/** Next node in the list */
+		private ListNode next;
+		
+		/**
+		 * Constructor for a ListNode
+		 * @param data data held in the node
+		 * @param next next node in the list
+		 */
+		public ListNode (E data, ListNode next) {
+			this.data = data;
+			this.next = next;
+		}
 	}
 }
 
