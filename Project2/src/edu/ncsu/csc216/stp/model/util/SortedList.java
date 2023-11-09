@@ -29,9 +29,6 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 */
 	public E remove(int idx) {
 		checkIndex(idx);
-		if (idx < 0 || idx > size - 1) {
-			throw new IndexOutOfBoundsException();
-		}
 		
 		ListNode current = null;
 		ListNode remove = null;
@@ -68,15 +65,6 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 		if (idx < 0 || idx >= size) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
-		
-		ListNode current = front;
-		for (int i = 0; i < idx - 1; i++) {
-			current = front.next;
-		}
-		
-		if (current.next.data == null) {
-			throw new IllegalArgumentException();
-		}
 	}
 	
 	/**
@@ -86,9 +74,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 */
 	public E get(int idx) {
 		
-		if (idx < 0 || idx >= size) {
-			throw new IndexOutOfBoundsException("Invalid index.");
-		}
+		checkIndex(idx);
 		if (idx == 0) {
 			return front.data;
 		}
@@ -114,13 +100,18 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 * @param element element to be added
 	 */
 	public void add(E element) {
-		if (element == null) {
-			throw new IllegalArgumentException();
+		
+		if (front == null || element.compareTo(front.data) < 0) {
+			front = new ListNode(element, front);
+		} else {
+			ListNode current = front;
+			while (current != null && current.next.data.compareTo(element) < 0) {
+				current = current.next;
+			}
+			
+			current.next = new ListNode(element, current.next);
 		}
-		
-		
-		
-		
+		size++;
 	}
 	
 	/**
