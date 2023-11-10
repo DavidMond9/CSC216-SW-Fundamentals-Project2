@@ -69,29 +69,39 @@ public class TestPlanReader {
 					if (token.startsWith("#")) {
 						token = token.substring(1);
 						token = token.trim();
+						System.out.println(token);
 						String testCaseId = token;
 						testCase.setTestCaseId(testCaseId);
-					} else if (token.startsWith("*")) {
-						token = token.substring(1);
-						token = token.trim();
-						String[] descLine = token.split(",");
-						testCase.setTestDescription(descLine[0]);
-						testCase.setTestType(descLine[1]);
-					} else if (token.startsWith("*") && testCase.getTestDescription() != null) {
-						token = token.substring(1);
-						token = token.trim();
-						expResults += token;
-					} else if (token.startsWith("-")) {
-						token = token.substring(1);
-						token = token.trim();
-						results.add(token);
-					} else {
+					} 
+					else if (token.startsWith("*") && testCase.getTestDescription() != null) {
 						token = token.substring(1);
 						token = token.trim();
 						expResults += token;
 					}
 					
-					testCase.setExpectedResults(expResults);
+					else if (token.startsWith("*")) {
+					token = token.substring(1);
+					token = token.trim();
+					String[] descLine = token.split(",");
+					testCase.setTestDescription(descLine[0]);
+					
+					} 
+					
+					else if (token.startsWith("-")) {
+						token = token.substring(1);
+						token = token.trim();
+						results.add(token);
+					} 
+					
+					else {
+						token = token.substring(1);
+						token = token.trim();
+						expResults += token;
+					}
+					
+					if(expResults != "") {
+						testCase.setExpectedResults(expResults);
+					}
 					
 					plan.addTestCase(testCase);
 				}
