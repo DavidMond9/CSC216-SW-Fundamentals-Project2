@@ -15,19 +15,15 @@ public class TestPlanTest {
 	TestPlan plan2 = new TestPlan("plan2");
 	@Test
 	void testAddTestCase() {
-<<<<<<< HEAD
 		plan.addTestCase(newCase);
 		assertEquals(plan.getTestCase(0).getTestCaseId(), "5");
-=======
 		TestPlan plan = new TestPlan("plan");
 		TestCase case1 = new TestCase("temp", "temp", "temp", "temp");
 		plan.addTestCase(case1);
 		assertEquals(case1, plan.getTestCase(0));
->>>>>>> branch 'main' of https://github.ncsu.edu/engr-csc216-fall2023/csc216-P2-T-025.git
 	}
 	@Test
 	void testGetTestCasesAsArray() {
-<<<<<<< HEAD
 		newCase.setTestPlan(plan);
 		newCase2.setTestPlan(plan2);
 		plan.addTestCase(newCase);
@@ -42,12 +38,10 @@ public class TestPlanTest {
 		TestCase removedCase = plan.removeTestCase(0);
 		assertEquals(removedCase.getTestCaseId(), "5");
 		assertEquals(removedCase.getTestDescription(), "Desc");
-=======
 		TestPlan plan = new TestPlan("plan");
 		TestCase case1 = new TestCase("temp", "temp", "temp", "temp");
 		plan.addTestCase(case1);
 		String[][] tests = plan.getTestCasesAsArray();
 		assertEquals("temp", tests[0][1]);
->>>>>>> branch 'main' of https://github.ncsu.edu/engr-csc216-fall2023/csc216-P2-T-025.git
 	}
 }
