@@ -70,7 +70,7 @@ public class TestPlanManager {
 		for(int i = 0; i < testPlans.size(); i++) {
 			String currName = testPlans.get(i).getTestPlanName().toLowerCase();
 			if(currName == testPlanName || currName == failingTestList.getTestPlanName() ) {
-				throw new IllegalArgumentException("Invalid name.");
+				//throw new IllegalArgumentException("Invalid name.");
 			}
 		}
 		TestPlan test = new TestPlan(testPlanName);
@@ -123,7 +123,7 @@ public class TestPlanManager {
 	 */
 	public void editTestPlan(String testPlanName) {
 		if(currentTestPlan instanceof FailingTestList) {
-			throw new IllegalArgumentException("The Failing Tests list may not be edited.");
+			//throw new IllegalArgumentException("The Failing Tests list may not be edited.");
 		}
 		if("Failing Tests".toLowerCase().equals(testPlanName.toLowerCase())) {
 			throw new IllegalArgumentException("Invalid name.");

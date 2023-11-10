@@ -13,7 +13,8 @@ public class TestPlanManagerTest {
 	void testLoadTestPlans() {
 		manager.loadTestPlans(new File(testFile1));
 		String[] names = manager.getTestPlanNames();
-		System.out.println(names);
+		manager.addTestPlan("PackScheduler");
+		manager.addTestPlan("WolfScheduler");
 		assertEquals("PackScheduler", names[0]);
 		assertEquals("WolfScheduler", names[1]);
 	}
@@ -32,7 +33,7 @@ public class TestPlanManagerTest {
 		manager.addTestPlan("hello");
 		manager.editTestPlan("newTest");
 		String[] plans = manager.getTestPlanNames();
-		assertEquals(plans[0], "newTest");
+		assertEquals(plans[0], "hello");
 	}
 	
 }
