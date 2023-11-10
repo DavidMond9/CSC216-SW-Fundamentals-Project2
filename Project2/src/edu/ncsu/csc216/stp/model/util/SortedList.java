@@ -101,6 +101,14 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 	 */
 	public void add(E element) {
 		
+		if (element == null) {
+			throw new NullPointerException("Cannot add null element.");
+		}
+		
+		if (contains(element)) {
+			throw new IllegalArgumentException("Cannot add duplicate element");
+		}
+		
 		if (front == null || element.compareTo(front.data) < 0) {
 			front = new ListNode(element, front);
 		} else {
