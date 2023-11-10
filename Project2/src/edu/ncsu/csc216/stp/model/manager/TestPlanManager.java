@@ -70,12 +70,12 @@ public class TestPlanManager {
 	 * @param testPlanName test to be added
 	 */
 	public void addTestPlan(String testPlanName) {
-		for(int i = 0; i < testPlans.size(); i++) {
-			String currName = testPlans.get(i).getTestPlanName().toLowerCase();
+		//for(int i = 0; i < testPlans.size(); i++) {
+			//String currName = testPlans.get(i).getTestPlanName().toLowerCase();
 			//if(currName == testPlanName || currName == failingTestList.getTestPlanName() ) {
 				//throw new IllegalArgumentException("Invalid name.");
 			//}
-		}
+		//}
 		TestPlan test = new TestPlan(testPlanName);
 		testPlans.add(test);
 		isChanged = true;
