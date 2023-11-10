@@ -1,6 +1,6 @@
 package edu.ncsu.csc216.stp.model.test_plans;
 
-import edu.ncsu.csc216.stp.model.manager.TestPlanManager;
+
 import edu.ncsu.csc216.stp.model.tests.TestCase;
 import edu.ncsu.csc216.stp.model.util.ISwapList;
 import edu.ncsu.csc216.stp.model.util.SwapList;
