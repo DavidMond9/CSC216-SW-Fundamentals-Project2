@@ -59,7 +59,7 @@ public abstract class AbstractTestPlan {
 	 * @return A SwapList of test cases
 	 */
 	public ISwapList<TestCase> getTestCases() {
-		return null;
+		return testList;
 	}
 	
 	/**
