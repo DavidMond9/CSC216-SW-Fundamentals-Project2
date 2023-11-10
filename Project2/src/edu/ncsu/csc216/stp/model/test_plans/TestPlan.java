@@ -24,7 +24,7 @@ public class TestPlan extends AbstractTestPlan implements Comparable<TestPlan> {
 	 * @return a 2D array of test cases
 	 */
 	public String[][] getTestCasesAsArray() {
-		ISwapList<TestCase> testList = this.getTestCases();
+		ISwapList<TestCase> testList = getTestCases();
 		String[][] res = new String[testList.size()][3];
 		
 		for(int i = 0; i < testList.size(); i++) {
