@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
 
 public class TestPlanReaderTest {
-	private static TestPlanManager manager = new TestPlanManager();
 	File test = new File("test-files/test-plans0.txt");
 	@Test
 	void testReadTestPlansFile() {

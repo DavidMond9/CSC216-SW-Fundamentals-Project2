@@ -1,8 +1,6 @@
 package edu.ncsu.csc216.stp.model.manager;
 import org.junit.jupiter.api.Test;
 
-import edu.ncsu.csc216.stp.model.tests.TestCase;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
@@ -15,7 +13,6 @@ public class TestPlanManagerTest {
 	@Test
 	void testLoadTestPlans() {
 		manager.loadTestPlans(new File(testFile1));
-		String[] names = manager.getTestPlanNames();
 		manager.addTestPlan("PackScheduler");
 		assertEquals(2, 1 + 1);
 	}
@@ -48,6 +45,7 @@ public class TestPlanManagerTest {
 		assertEquals(manager.getCurrentTestPlan().getTestPlanName(), "Failing Tests");
 		Exception e1 = assertThrows(IllegalArgumentException.class, 
 				() -> manager.removeTestPlan());
+		assertEquals(e1.getMessage(), "The Failing Tests list may not be deleted.");
 	}
 	
 }
