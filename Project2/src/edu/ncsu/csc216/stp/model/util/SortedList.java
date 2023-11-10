@@ -134,6 +134,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			if (element.equals(current.data)) {
 				return true;
 			}
+			current = current.next;
 		}
 		
 		return false;
