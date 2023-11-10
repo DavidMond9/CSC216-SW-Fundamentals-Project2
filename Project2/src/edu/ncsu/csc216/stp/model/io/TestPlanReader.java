@@ -31,8 +31,7 @@ public class TestPlanReader {
 	 */
 	public static ISortedList<TestPlan> readTestPlansFile(File file){
 		try {
-			String fileName = file.getName();
-			Scanner fileReader = new Scanner(new FileInputStream(fileName));
+			Scanner fileReader = new Scanner(new FileInputStream(file));
 			String fileContent = "";
 			SortedList<TestPlan> testPlans = new SortedList<TestPlan>();
 			while (fileReader.hasNextLine()) {
@@ -43,6 +42,12 @@ public class TestPlanReader {
 			if (!fileContent.startsWith("!")) {
 				throw new IllegalArgumentException("Unable to load file.");
 			}
+			
+			// plan
+			
+			// scan
+				// if testplan token
+					// call testplan, pass in token
 			Scanner scnr = new Scanner(fileContent);
 			scnr.useDelimiter("\\r?\\n?[!]");
 			while (scnr.hasNext()) {
@@ -56,14 +61,12 @@ public class TestPlanReader {
 				TestCase testCase = new TestCase("temp", "temp", "temp", "temp");
 				Log<String> results = new Log<String>();
 				
-				
 				for (String token: planLines) {
 					
 					String expResults = "";
 					//Get the plan name
-					if (token.startsWith("!")) {
-						plan = processTestPlan(token);
-					} else if (token.startsWith("#")) {
+					plan = processTestPlan(token);
+					if (token.startsWith("#")) {
 						token = token.substring(1);
 						token = token.trim();
 						String testCaseId = token;
@@ -108,6 +111,8 @@ public class TestPlanReader {
 	 * @return returns a TestPlan that was processed to go back to the reader.
 	 */
 	private static TestPlan processTestPlan(String testPlan) {
+		// if token is testcase
+			// call process test c
 		String newTestPlan = testPlan.substring(1);
 		newTestPlan = newTestPlan.trim();
 		TestPlan newPlan = new TestPlan(newTestPlan);
