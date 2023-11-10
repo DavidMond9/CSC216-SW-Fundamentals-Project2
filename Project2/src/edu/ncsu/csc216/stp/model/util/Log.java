@@ -49,7 +49,7 @@ public class Log<E> implements ILog<E> {
 	 * @return the element at the given index
 	 */
 	public E get(int idx) {
-		if (idx < 0 || idx >= size) {
+		if (idx < 0 || idx > size) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
 		return log[idx];

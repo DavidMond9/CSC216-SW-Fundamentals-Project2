@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AbstractTestPlanTest {
 	
 	AbstractTestPlan test1 = new TestPlan("Name");
+	AbstractTestPlan test2 = new TestPlan("Name2");
+
 	TestCase newCase = new TestCase("5", "Old", "Desc", "results");
 	
 	@Test
@@ -27,6 +29,14 @@ public class AbstractTestPlanTest {
 		assertEquals(test1.getTestCase(0).getTestCaseId(), "5");
 		assertEquals(test1.getTestCase(0).getTestType(), "Old");
 		assertEquals(test1.getTestCase(0).getTestDescription(), "Desc");
+	}
+	@Test
+	void testEquals() {
+		assertEquals(test1.equals(test2), false);
+	}
+	@Test 
+	void testHashcode() {
+		assertEquals(test1.hashCode(), 2420426);
 	}
 
 }
