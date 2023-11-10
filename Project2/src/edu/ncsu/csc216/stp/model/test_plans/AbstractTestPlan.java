@@ -40,7 +40,7 @@ public abstract class AbstractTestPlan {
 			throw new IllegalArgumentException("Invalid name.");
 		}
 		if(name == FailingTestList.FAILING_TEST_LIST_NAME) {
-			throw new IllegalArgumentException("Invalid name.");
+			//throw new IllegalArgumentException("Invalid name.");
 		}
 		
 		testPlanName = name;

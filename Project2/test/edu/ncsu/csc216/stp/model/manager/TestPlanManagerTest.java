@@ -8,6 +8,7 @@ public class TestPlanManagerTest {
 	
 	private static TestPlanManager manager = new TestPlanManager();
 	String testFile1 = "test-plans0.txt";
+	
 	@Test
 	void testLoadTestPlans() {
 		manager.loadTestPlans(new File(testFile1));
