@@ -19,12 +19,6 @@ import edu.ncsu.csc216.stp.model.util.SortedList;
 public class TestPlanReader {
 
 	/**
-	 * Constructor for the TestPlanReader.
-	 */
-	public TestPlanReader() {
-		
-	}
-	/**
 	 * Reads the test plan to a file.
 	 * @param file File to be read from.
 	 * @return returns a sorted list of the test plan.
@@ -98,7 +92,7 @@ public class TestPlanReader {
 						expResults += token;
 					}
 					
-					if(expResults != "") {
+					if(!"".equals(expResults)) {
 						testCase.setExpectedResults(expResults);
 					}
 					

@@ -160,10 +160,8 @@ public class TestCase {
 		if(testResults.size() == 0) {
 			return false;
 		}
-		if (testResults.get(testResults.size() - 1).isPassing()) {
-			return true;
-		}
-		return false;
+		return testResults.get(testResults.size() - 1).isPassing();
+
 	}
 	
 	/**
