@@ -52,15 +52,14 @@ public class FailingTestList extends AbstractTestPlan {
 	 * @return a 2D array of the test cases
 	 */
 	public String[][] getTestCasesAsArray(){
-		ISwapList<TestCase> testList = this.getTestCases();
+		ISwapList<TestCase> testList = super.getTestCases();
 		String[][] res = new String[testList.size()][3];
 		
 		for(int i = 0; i < testList.size(); i++) {
-			res[i][0] = this.getTestCase(i).getTestCaseId();
-			res[i][1] = this.getTestCase(i).getTestType();
-			res[i][2] = this.getTestCase(i).getTestPlan().getTestPlanName();
-		}
-		
+			res[i][0] = super.getTestCase(i).getTestCaseId();
+			res[i][1] = super.getTestCase(i).getTestType();
+			res[i][2] = super.getTestCase(i).getTestPlan().getTestPlanName();
+		}	
 		return res;
 	}
 	

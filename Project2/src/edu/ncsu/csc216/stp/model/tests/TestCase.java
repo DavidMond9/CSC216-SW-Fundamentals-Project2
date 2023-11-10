@@ -171,6 +171,9 @@ public class TestCase {
 	 * @return the status of the test case
 	 */
 	public String getStatus() {
+		if(testResults.size() == 0) {
+			return TestResult.FAIL;
+		}
 		if (testResults.get(testResults.size() - 1).isPassing()) {
 			return TestResult.PASS;
 		}

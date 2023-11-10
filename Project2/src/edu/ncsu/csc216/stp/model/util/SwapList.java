@@ -31,6 +31,7 @@ public class SwapList<E> implements ISwapList<E> {
 	public void add(E element) {
 		checkCapacity(size);
 		list[size] = element;
+		size++;
 	}
 	
 	/**
@@ -56,7 +57,7 @@ public class SwapList<E> implements ISwapList<E> {
 		for (int i = idx; i < size; i++) {
 			list[i] = list[i + 1];
 		}
-		
+		size--;
 		return temp;
 	}
 	

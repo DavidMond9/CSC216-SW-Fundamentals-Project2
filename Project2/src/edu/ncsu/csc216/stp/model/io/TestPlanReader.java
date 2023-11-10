@@ -69,7 +69,6 @@ public class TestPlanReader {
 					if (token.startsWith("#")) {
 						token = token.substring(1);
 						token = token.trim();
-						System.out.println(token);
 						String testCaseId = token;
 						testCase.setTestCaseId(testCaseId);
 					} 
