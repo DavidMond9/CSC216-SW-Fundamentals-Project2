@@ -34,11 +34,6 @@ public class TestPlanManager {
 	 */
 	public TestPlanManager() {
 		clearTestPlans();
-		testPlans = new SortedList();
-		failingTestList = new FailingTestList();
-		setCurrentTestPlan(failingTestList.getTestPlanName());
-		isChanged = false;
-		
 	}
 	
 	/**
@@ -47,15 +42,16 @@ public class TestPlanManager {
 	 */
 	public void loadTestPlans(File file) {
 		testPlans = TestPlanReader.readTestPlansFile(file);
-		currentTestPlan = testPlans.get(0);
+		setCurrentTestPlan("Failing Tests");
 	}
 	
 	/**
 	 * Saves the list of test plans to a file
 	 * @param file the test plans are being saved to
-	 */
+	 */	
 	public void saveTestPlans(File file) {
 		TestPlanWriter.writeTestPlanFile(file, testPlans);
+		isChanged = false;
 	}
 	
 	/**
@@ -68,10 +64,18 @@ public class TestPlanManager {
 	
 	/**
 	 * Adds a test to the current test plan
-	 * @param test test to be added
+	 * @param testPlanName test to be added
 	 */
-	public void addTestPlan(String test) {
-		
+	public void addTestPlan(String testPlanName) {
+		for(int i = 0; i < testPlans.size(); i++) {
+			String currName = testPlans.get(i).getTestPlanName().toLowerCase();
+			if(currName == testPlanName || currName == failingTestList.getTestPlanName() ) {
+				throw new IllegalArgumentException("Invalid name.");
+			}
+		}
+		TestPlan test = new TestPlan(testPlanName);
+		testPlans.add(test);
+		isChanged = true;
 	}
 	
 	/**
@@ -79,22 +83,29 @@ public class TestPlanManager {
 	 * @return an array of the names of the tests
 	 */
 	public String[] getTestPlanNames() {
-		return null;
+		String[] res = new String[testPlans.size()];
+		for(int i = 0; i < testPlans.size(); i++) {
+			res[i] = testPlans.get(i).getTestPlanName();
+		}
+		return res;
 	}
 	
-	/**
-	 * Gets all of the failing tests in the current test plan
-	 */
-	private void getFailingTests() {
-		
-	}
 	
 	/**
 	 * Sets the current test plan
-	 * @param test name of the plan
+	 * @param testPlanName name of the plan
 	 */
 	public void setCurrentTestPlan(String testPlanName) {
-		currentTestPlan = testPlanName;
+		boolean found = false;
+		for(int i = 0; i < testPlans.size(); i++) {
+			if(testPlans.get(i).getTestPlanName() == testPlanName) {
+				currentTestPlan.setTestPlanName(testPlanName);
+				found = true;
+			}
+		}
+		if(!found) {
+			currentTestPlan = failingTestList;
+		}
 	}
 	
 	/**
@@ -102,23 +113,43 @@ public class TestPlanManager {
 	 * @return the current test plan
 	 */
 	public AbstractTestPlan getCurrentTestPlan() {
-		getFailingTests();
-		return null;
+		return currentTestPlan;
 	}
 	
 	/**
 	 * Changes the name of the current test plan
-	 * @param name new name of the current test plan
+	 * @param testPlanName new name of the current test plan
 	 */
 	public void editTestPlan(String testPlanName) {
-		
+		if(currentTestPlan instanceof FailingTestList) {
+			throw new IllegalArgumentException("The Failing Tests list may not be edited.");
+		}
+		if("Failing Tests".toLowerCase().equals(testPlanName.toLowerCase())) {
+			throw new IllegalArgumentException("Invalid name.");
+		}
+		for(int i = 0; i < testPlans.size(); i++) {
+			if(testPlans.get(i).getTestPlanName().toLowerCase() == testPlanName.toLowerCase()) {
+				throw new IllegalArgumentException("Invalid name.");
+			}
+		}
+		currentTestPlan.setTestPlanName(testPlanName);
+		isChanged = true;	
 	}
 	
 	/**
 	 * Removes the current test plan
 	 */
 	public void removeTestPlan() {
-		
+		if(currentTestPlan instanceof FailingTestList) {
+			throw new IllegalArgumentException("The Failing Tests list may not be deleted.");
+		}
+		for(int i = 0; i < testPlans.size(); i++) {
+			if(testPlans.get(i).getTestPlanName() == currentTestPlan.getTestPlanName()) {
+				testPlans.remove(i);
+			}
+		}
+		currentTestPlan = failingTestList;
+		isChanged = true;
 	}
 	
 	/**
@@ -126,7 +157,13 @@ public class TestPlanManager {
 	 * @param testcase test case to be added
 	 */
 	public void addTestCase(TestCase testcase) {
-		
+		if(currentTestPlan instanceof TestPlan) {
+			if(!testcase.isTestCasePassing()) {
+				failingTestList.addTestCase(testcase);
+			}
+			currentTestPlan.addTestCase(testcase);
+		}
+		isChanged = true;
 	}
 	
 	/**
@@ -136,13 +173,16 @@ public class TestPlanManager {
 	 * @param actualResult actual result of the test to be added to the test
 	 */
 	public void addTestResult(int idx, boolean passing, String actualResult) {
-		
+		currentTestPlan.getTestCase(idx).addTestResult(passing, actualResult);
 	}
 	
 	/**
 	 * Clears out all of the test plans to create an empty manager
 	 */
 	public void clearTestPlans() {
-		
+		testPlans = new SortedList();
+		failingTestList = new FailingTestList();
+		currentTestPlan = failingTestList;
+		isChanged = false;
 	}
 }
