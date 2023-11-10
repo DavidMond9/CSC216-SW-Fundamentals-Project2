@@ -18,10 +18,13 @@ import edu.ncsu.csc216.stp.model.util.SortedList;
  */
 public class TestPlanManager {
 	
+	/** Current test plan in the view */
 	private AbstractTestPlan currentTestPlan;
 	
+	/** List of failing tests in the test plans */
 	private FailingTestList failingTestList;
 	
+	/** List of test plans passed into the manager */
 	private ISortedList<TestPlan> testPlans;
 	
 	/**
@@ -69,9 +72,9 @@ public class TestPlanManager {
 	public void addTestPlan(String testPlanName) {
 		for(int i = 0; i < testPlans.size(); i++) {
 			String currName = testPlans.get(i).getTestPlanName().toLowerCase();
-			if(currName == testPlanName || currName == failingTestList.getTestPlanName() ) {
+			//if(currName == testPlanName || currName == failingTestList.getTestPlanName() ) {
 				//throw new IllegalArgumentException("Invalid name.");
-			}
+			//}
 		}
 		TestPlan test = new TestPlan(testPlanName);
 		testPlans.add(test);
@@ -122,9 +125,9 @@ public class TestPlanManager {
 	 * @param testPlanName new name of the current test plan
 	 */
 	public void editTestPlan(String testPlanName) {
-		if(currentTestPlan instanceof FailingTestList) {
+		//if(currentTestPlan instanceof FailingTestList) {
 			//throw new IllegalArgumentException("The Failing Tests list may not be edited.");
-		}
+		//}
 		if("Failing Tests".toLowerCase().equals(testPlanName.toLowerCase())) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
@@ -181,7 +184,7 @@ public class TestPlanManager {
 	 * Clears out all of the test plans to create an empty manager
 	 */
 	public void clearTestPlans() {
-		testPlans = new SortedList();
+		testPlans = new SortedList<TestPlan>();
 		failingTestList = new FailingTestList();
 		currentTestPlan = failingTestList;
 		isChanged = false;

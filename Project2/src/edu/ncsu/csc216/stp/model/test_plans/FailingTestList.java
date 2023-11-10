@@ -36,16 +36,13 @@ public class FailingTestList extends AbstractTestPlan {
 		super.addTestCase(testcase);
 	}
 	
-	/**
-	 * Sets the name of the test plan the test case is in
-	 * @param name New name of the test plan
-	 */
-	public void setTestPlanName(String name) {
-		if(!name.toLowerCase().equals(FAILING_TEST_LIST_NAME)) {
+	
+	//public void setTestPlanName(String name) {
+		//if(!name.toLowerCase().equals(FAILING_TEST_LIST_NAME)) {
 			//throw new IllegalArgumentException("The Failing Tests list cannot be edited.");
-		}
-		super.setTestPlanName(name);
-	}
+		//}
+		//super.setTestPlanName(name);
+//	}
 	
 	/**
 	 * Gets the test cases and the data they hold as a 2D array

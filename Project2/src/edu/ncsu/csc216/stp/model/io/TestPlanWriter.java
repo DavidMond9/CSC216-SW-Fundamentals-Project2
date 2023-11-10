@@ -15,13 +15,6 @@ import edu.ncsu.csc216.stp.model.util.ISortedList;
 public class TestPlanWriter {
 	
 	/**
-	 * Constructor to create a TestPlanWriter.
-	 */
-	public TestPlanWriter() {
-		
-	}
-	
-	/**
 	 * Writes a test plan to a file.
 	 * @param file File input for writing.
 	 * @param list List of test plans to write out.

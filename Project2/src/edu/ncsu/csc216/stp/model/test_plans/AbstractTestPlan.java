@@ -14,10 +14,7 @@ public abstract class AbstractTestPlan {
 	
 	/** Name of the test plan */
 	private String testPlanName;
-	/**
-	 * TestPlan for the current plan.
-	 */
-	private TestPlanManager currentPlan;
+
 	/**
 	 * SwapList of test cases for the current test cases.
 	 */
