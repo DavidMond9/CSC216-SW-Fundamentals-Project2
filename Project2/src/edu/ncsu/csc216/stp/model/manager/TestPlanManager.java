@@ -137,6 +137,9 @@ public class TestPlanManager {
 				throw new IllegalArgumentException("Invalid name.");
 			}
 		}
+		if(testPlanName.equals(currentTestPlan.getTestPlanName())) {
+			throw new IllegalArgumentException("Invalid name.");
+		}
 		currentTestPlan.setTestPlanName(testPlanName);
 		isChanged = true;	
 	}
