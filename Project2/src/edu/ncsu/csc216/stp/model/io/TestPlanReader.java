@@ -82,10 +82,16 @@ public class TestPlanReader {
 						}
 						token = token.substring(1);
 						token = token.trim();
-						String testCaseId = token.substring(0, token.indexOf(','));
-						String testType = token.substring(token.indexOf(',') + 1);
-						testCase.setTestCaseId(testCaseId);
-						testCase.setTestType(testType);
+						if (token.contains(",")) {
+							String testCaseId = token.substring(0, token.indexOf(','));
+							String testType = token.substring(token.indexOf(',') + 1);
+							testCase.setTestCaseId(testCaseId);
+							testCase.setTestType(testType);
+						}
+						//String testCaseId = token.substring(0, token.indexOf(','));
+						//String testType = token.substring(token.indexOf(',') + 1);
+						//testCase.setTestCaseId(testCaseId);
+						//testCase.setTestType(testType);
 					} 
 					else if (token.startsWith("*") && !"".equals(descLine)) {
 						testCase.setTestDescription(descLine);
