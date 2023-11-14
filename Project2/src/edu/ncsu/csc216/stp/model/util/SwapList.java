@@ -86,9 +86,12 @@ public class SwapList<E> implements ISwapList<E> {
 		if (size == 0) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
-		E temp = list[idx - 1];
-		list[idx - 1] = list[idx];
-		list[idx] = temp;
+		
+		if (idx != 0) {
+			E temp = list[idx - 1];
+			list[idx - 1] = list[idx];
+			list[idx] = temp;
+		}
 	}
 	
 	/**
@@ -100,9 +103,13 @@ public class SwapList<E> implements ISwapList<E> {
 		if (size == 0) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
-		E temp = list[idx + 1];
-		list[idx + 1] = list[idx];
-		list[idx] = temp;
+		
+		if (idx != size - 1) {
+			E temp = list[idx + 1];
+			list[idx + 1] = list[idx];
+			list[idx] = temp;
+		}
+		
 	}
 	
 	/**
@@ -132,12 +139,15 @@ public class SwapList<E> implements ISwapList<E> {
 		if (size == 0) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
-		E oldBack = list[size - 1];
-		list[size - 1] = list[idx];
-		for (int i = idx; i < size - 2; i++) {
-			list[i] = list[i + 1];
+		
+		if (idx != size - 1) {
+			E oldBack = list[size - 1];
+			list[size - 1] = list[idx];
+			for (int i = idx; i < size - 2; i++) {
+				list[i] = list[i + 1];
+			}
+			list[size - 2] = oldBack;
 		}
-		list[size - 2] = oldBack;
 	}
 	
 	/**
