@@ -186,7 +186,9 @@ public class TestPlanReader {
 						}
 					}					
 				}
-				
+				if(testPlans.size() == 0) {
+					testPlans.add(currentPlan);
+				}
 			}
 			
 			scnr.close();
