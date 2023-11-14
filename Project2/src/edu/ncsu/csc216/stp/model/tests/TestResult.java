@@ -58,7 +58,7 @@ public class TestResult {
 	 * @param actualResults the actualResults of the test case
 	 */
 	public void setActualResults(String actualResults) {
-		if(actualResults == null) {
+		if(actualResults == null || "".equals(actualResults)) {
 			throw new IllegalArgumentException("Invalid test results.");
 		}
 		this.actualResults = actualResults;
