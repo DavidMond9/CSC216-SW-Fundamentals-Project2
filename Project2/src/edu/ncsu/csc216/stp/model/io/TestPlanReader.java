@@ -186,13 +186,11 @@ public class TestPlanReader {
 						}
 					}					
 				}
-				if(testPlans.size() == 0) {
-					testPlans.add(currentPlan);
-				}
 			}
-			
 			scnr.close();
-
+			if(testPlans.size() == 0) {
+				testPlans.add(currentPlan);
+			}
 			return testPlans;
 		} catch(IOException e) {
 			throw new IllegalArgumentException("Unable to load file.");
