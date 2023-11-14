@@ -25,7 +25,7 @@ public class TestPlanReaderTest {
 		assertEquals(testPlans.get(1).getTestCase(0).getTestCaseId(), "test1");
 		assertEquals(testPlans.get(1).getTestCase(0).getTestType(), "Equivalence Class");
 		assertEquals(testPlans.get(1).getTestCase(0).getTestDescription(), "description" + "\n" + "with multiple lines");
-		assertEquals(testPlans.get(1).getTestCase(0).getExpectedResults(), "expected results with multiple lines");
+		assertEquals(testPlans.get(1).getTestCase(0).getExpectedResults(), "expected results" + "\n" + "with multiple lines");
 
 		assertEquals(testPlans.get(1).getTestCase(1).getTestCaseId(), "test2");
 		assertEquals(testPlans.get(1).getTestCase(1).getTestType(), "Boundary Value");

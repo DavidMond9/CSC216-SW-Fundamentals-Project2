@@ -149,7 +149,7 @@ public class TestPlanReader {
 							descLine += "\n" + token;
 						}
 						else if("*".equals(last)) {
-							expectedRes += " " + token;
+							expectedRes += "\n" + token;
 						}
 						else if("-".equals(last)) {
 							actualRes += " " + token;
