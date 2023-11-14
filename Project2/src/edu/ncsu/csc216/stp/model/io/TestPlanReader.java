@@ -17,7 +17,7 @@ import edu.ncsu.csc216.stp.model.util.SortedList;
  * @author David Mond
  */
 public class TestPlanReader {
-
+	
 	/**
 	 * Reads the test plan to a file.
 	 * @param file File to be read from.
