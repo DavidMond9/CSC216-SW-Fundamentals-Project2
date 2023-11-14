@@ -59,7 +59,7 @@ public class TestResult {
 	 */
 	public void setActualResults(String actualResults) {
 		if(actualResults == null) {
-			throw new IllegalArgumentException("Illegal Argument Exception.");
+			throw new IllegalArgumentException("Invalid test results.");
 		}
 		this.actualResults = actualResults;
 	}
