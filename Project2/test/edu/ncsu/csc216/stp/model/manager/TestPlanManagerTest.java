@@ -31,10 +31,12 @@ public class TestPlanManagerTest {
 	
 	@Test
 	void testEditTestPlan() {
+		manager.addTestPlan("newTest");
 		manager.addTestPlan("hello");
+		manager.setCurrentTestPlan("hello");
 		manager.editTestPlan("newTest");
 		String[] plans = manager.getTestPlanNames();
-		assertEquals(plans[0], "hello");
+		assertEquals(plans[0], "newTest");
 	}
 	
 	@Test
