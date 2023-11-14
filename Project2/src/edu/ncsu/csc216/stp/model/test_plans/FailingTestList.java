@@ -72,6 +72,8 @@ public class FailingTestList extends AbstractTestPlan {
 	 * Clears all of TestCases from the test plan manager
 	 */
 	public void clearTests() {
-		failingTestList.clearTestPlans();		
+		for(int i = super.getTestCases().size(); i > 0; i--) {
+			super.removeTestCase(i);
+		}
 	}
 }

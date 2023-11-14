@@ -42,12 +42,6 @@ public class TestPlanReaderTest {
 		
 		assertEquals(testPlans.get(0).getTestCase(0).getTestCaseId(), "test0");
 		assertEquals(testPlans.get(0).getTestCase(1).getTestCaseId(), "test1");
-
-
-
-
-		
-
 	}
 	
 }
