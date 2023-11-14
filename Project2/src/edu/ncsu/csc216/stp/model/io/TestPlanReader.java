@@ -146,7 +146,7 @@ public class TestPlanReader {
 					
 					else {
 						if("*".equals(last) && "temp".equals(testCase.getTestDescription())) {
-							descLine += " " + token;
+							descLine += "\n" + token;
 						}
 						else if("*".equals(last)) {
 							expectedRes += " " + token;
