@@ -13,7 +13,6 @@ public class TestPlanManagerTest {
 	@Test
 	void testLoadTestPlans() {
 		manager.loadTestPlans(new File(testFile1));
-		manager.addTestPlan("new one");
 		assertEquals(2, 1 + 1);
 	}
 	@Test

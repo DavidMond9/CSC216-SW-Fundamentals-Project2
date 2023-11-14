@@ -3,21 +3,25 @@ import org.junit.jupiter.api.Test;
 
 import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
 import edu.ncsu.csc216.stp.model.util.ISortedList;
-import edu.ncsu.csc216.stp.model.util.SortedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 
+/**
+ * Tests the TestPlanReader class
+ */
 public class TestPlanReaderTest {
 
+	/** The valid file used for testing */
 	File test = new File("test-files/test-plans0.txt");
+	
+	/**The list of test plans used for assertion testing */
 	private ISortedList<TestPlan> testPlans;
 
 	@Test
 	void testReadTestPlansFile() {
 		testPlans = TestPlanReader.readTestPlansFile(test);
-		//readTestPlansFile(test);
 		assertEquals(testPlans.size(), 2);
 		assertEquals(testPlans.get(1).getTestPlanName(), "WolfScheduler");
 		assertEquals(testPlans.get(0).getTestPlanName(), "PackScheduler");
