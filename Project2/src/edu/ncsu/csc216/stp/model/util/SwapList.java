@@ -59,10 +59,10 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @return the removed element
 	 */
 	public E remove(int idx) {
+		checkIndex(idx);
 		if (size == 0) {
 			throw new IllegalArgumentException("Invalid index.");
 		}
-		checkIndex(idx);
 		E temp = list[idx];
 		for (int i = idx; i < size; i++) {
 			list[i] = list[i + 1];
