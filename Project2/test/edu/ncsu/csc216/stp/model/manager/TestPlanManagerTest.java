@@ -1,6 +1,8 @@
 package edu.ncsu.csc216.stp.model.manager;
 import org.junit.jupiter.api.Test;
 
+import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
@@ -31,6 +33,7 @@ public class TestPlanManagerTest {
 	@Test
 	void testEditTestPlan() {
 		manager.addTestPlan("hello");
+		manager.setCurrentTestPlan("hello");
 		manager.editTestPlan("newTest");
 		String[] plans = manager.getTestPlanNames();
 		assertEquals(plans[0], "hello");
