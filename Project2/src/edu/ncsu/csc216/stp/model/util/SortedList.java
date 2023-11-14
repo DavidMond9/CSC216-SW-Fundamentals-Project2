@@ -107,7 +107,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 		}
 		
 		if (contains(element)) {
-			throw new IllegalArgumentException("Invalid name.");
+			throw new IllegalArgumentException("Cannot add duplicate element.");
 		}
 		
 		if (front == null || element.compareTo(front.data) < 0) {
