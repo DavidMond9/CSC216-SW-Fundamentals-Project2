@@ -46,12 +46,12 @@ public class TestPlanReader {
 			scnr.useDelimiter("\\r?\\n?[!]");
 			String actualRes = "";
 			TestPlan currentPlan = null;
+			TestCase testCase = new TestCase("temp", "temp", "temp", "temp");
 			while (scnr.hasNext()) {
 				//Get the plan 
 				String planString = scnr.next();				
 				String[] planLines = planString.split("\r?\n|$");
 				//Fields for testPlan data
-				TestCase testCase = new TestCase("temp", "temp", "temp", "temp");
 				Log<String> results = new Log<String>();
 				String descLine = "";
 				String expectedRes = "";
@@ -68,13 +68,15 @@ public class TestPlanReader {
 								testCase.addTestResult(false, actualRes);
 							}
 							currentPlan.addTestCase(testCase);
+							testCase = new TestCase("temp", "temp", "temp", "temp");							actualRes = "";
 							actualRes = "";
 							descLine = "";
 							expectedRes = "";
 						}
 						if("*".equals(last)) {
+							testCase.setExpectedResults(expectedRes);
 							currentPlan.addTestCase(testCase);
-							actualRes = "";
+							testCase = new TestCase("temp", "temp", "temp", "temp");							actualRes = "";
 							descLine = "";
 							expectedRes = "";
 						}
@@ -116,6 +118,7 @@ public class TestPlanReader {
 									testCase.addTestResult(false, actualRes);
 								}
 								currentPlan.addTestCase(testCase);
+								testCase = new TestCase("temp", "temp", "temp", "temp"); 
 								testPlans.add(currentPlan);
 							}
 						}
@@ -133,6 +136,7 @@ public class TestPlanReader {
 							actualRes += token;
 							if(count == planLines.length && testPlans.size() != 0) {
 								currentPlan.addTestCase(testCase);
+								testCase = new TestCase("temp", "temp", "temp", "temp");
 								testPlans.add(currentPlan);
 							}
 						}
@@ -157,6 +161,7 @@ public class TestPlanReader {
 									testCase.addTestResult(false, actualRes);
 								}
 								currentPlan.addTestCase(testCase);
+								testCase = new TestCase("temp", "temp", "temp", "temp");
 								testPlans.add(currentPlan);
 							}
 						}
@@ -169,6 +174,7 @@ public class TestPlanReader {
 									testCase.addTestResult(false, actualRes);
 								}
 								currentPlan.addTestCase(testCase);
+								testCase = new TestCase("temp", "temp", "temp", "temp");
 								testPlans.add(currentPlan);
 							}
 							currentPlan = processTestPlan(token);
