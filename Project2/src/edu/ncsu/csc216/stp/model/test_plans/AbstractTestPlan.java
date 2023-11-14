@@ -36,9 +36,11 @@ public abstract class AbstractTestPlan {
 		if(name == null || "".equals(name)) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
+
 		if(name == FailingTestList.FAILING_TEST_LIST_NAME) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
+
 		
 		testPlanName = name;
 	}
@@ -73,6 +75,9 @@ public abstract class AbstractTestPlan {
 	 * @return the removed test case
 	 */
 	public TestCase removeTestCase(int idx) {
+		if(idx < 0 || idx > testList.size()) {
+			throw new IndexOutOfBoundsException("Index out of bounds.");
+		}
 		TestCase test = testList.remove(idx);
 		return test;
 	}

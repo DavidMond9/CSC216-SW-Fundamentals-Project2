@@ -46,12 +46,12 @@ public class TestPlanReader {
 			scnr.useDelimiter("\\r?\\n?[!]");
 			String actualRes = "";
 			TestPlan currentPlan = null;
+			TestCase testCase = new TestCase("temp", "temp", "temp", "temp");
 			while (scnr.hasNext()) {
 				//Get the plan 
 				String planString = scnr.next();				
 				String[] planLines = planString.split("\r?\n|$");
 				//Fields for testPlan data
-				TestCase testCase = new TestCase("temp", "temp", "temp", "temp");
 				Log<String> results = new Log<String>();
 				String descLine = "";
 				String expectedRes = "";
@@ -60,6 +60,26 @@ public class TestPlanReader {
 				for (String token: planLines) {
 					count += 1;
 					if (token.startsWith("#")) {
+						if("-".equals(last)) {
+							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
+								testCase.addTestResult(true, actualRes.substring(6));
+							}
+							else {
+								testCase.addTestResult(false, actualRes.substring(6));
+							}
+							currentPlan.addTestCase(testCase);
+							testCase = new TestCase("temp", "temp", "temp", "temp");							actualRes = "";
+							actualRes = "";
+							descLine = "";
+							expectedRes = "";
+						}
+						if("*".equals(last)) {
+							testCase.setExpectedResults(expectedRes);
+							currentPlan.addTestCase(testCase);
+							testCase = new TestCase("temp", "temp", "temp", "temp");							actualRes = "";
+							descLine = "";
+							expectedRes = "";
+						}
 						token = token.substring(1);
 						token = token.trim();
 						String testCaseId = token.substring(0, token.indexOf(','));
@@ -76,18 +96,6 @@ public class TestPlanReader {
 					}
 					
 					else if (token.startsWith("*")) {
-						if("-".equals(last)) {
-							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-								testCase.addTestResult(true, actualRes);
-								currentPlan.addTestCase(testCase);
-								actualRes = "";
-							}
-							else {
-								testCase.addTestResult(false, actualRes);
-								currentPlan.addTestCase(testCase);
-								actualRes = "";
-							}
-						}
 						token = token.substring(1);
 						token = token.trim();
 						descLine = token;
@@ -102,24 +110,24 @@ public class TestPlanReader {
 							token = token.substring(1);
 							token = token.trim();
 							actualRes += token;
-							System.out.println(count);
 							if(count == planLines.length && testPlans.size() != 0) {
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-									testCase.addTestResult(true, actualRes);
+									testCase.addTestResult(true, actualRes.substring(6));
 								}
 								else {
-									testCase.addTestResult(false, actualRes);
+									testCase.addTestResult(false, actualRes.substring(6));
 								}
 								currentPlan.addTestCase(testCase);
+								testCase = new TestCase("temp", "temp", "temp", "temp"); 
 								testPlans.add(currentPlan);
 							}
 						}
 						if("-".equals(last)) {
 							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-								testCase.addTestResult(true, actualRes);
+								testCase.addTestResult(true, actualRes.substring(6));
 							}
 							else {
-								testCase.addTestResult(false, actualRes);
+								testCase.addTestResult(false, actualRes.substring(6));
 							}
 							descLine = "";
 							actualRes = "";
@@ -128,6 +136,7 @@ public class TestPlanReader {
 							actualRes += token;
 							if(count == planLines.length && testPlans.size() != 0) {
 								currentPlan.addTestCase(testCase);
+								testCase = new TestCase("temp", "temp", "temp", "temp");
 								testPlans.add(currentPlan);
 							}
 						}
@@ -137,35 +146,35 @@ public class TestPlanReader {
 					
 					else {
 						if("*".equals(last) && "temp".equals(testCase.getTestDescription())) {
-							descLine += " " + token;
+							descLine += "\n" + token;
 						}
 						else if("*".equals(last)) {
-							expectedRes += " " + token;
+							expectedRes += "\n" + token;
 						}
 						else if("-".equals(last)) {
-							actualRes += " " + token;
+							actualRes += "\n" + token;
 							if(count == planLines.length && testPlans.size() != 0) {
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-									testCase.addTestResult(true, actualRes);
+									testCase.addTestResult(true, actualRes.substring(6));
 								}
 								else {
-									testCase.addTestResult(false, actualRes);
+									testCase.addTestResult(false, actualRes.substring(6));
 								}
 								currentPlan.addTestCase(testCase);
+								testCase = new TestCase("temp", "temp", "temp", "temp");
 								testPlans.add(currentPlan);
 							}
 						}
 						else {
-							System.out.println(token.substring(1));
 							if(currentPlan != null && !token.substring(1).equals(currentPlan.getTestPlanName())) {
-								System.out.println(actualRes.substring(0, actualRes.indexOf(':')));
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-									testCase.addTestResult(true, actualRes);
+									testCase.addTestResult(true, actualRes.substring(6));
 								}
 								else {
-									testCase.addTestResult(false, actualRes);
+									testCase.addTestResult(false, actualRes.substring(6));
 								}
 								currentPlan.addTestCase(testCase);
+								testCase = new TestCase("temp", "temp", "temp", "temp");
 								testPlans.add(currentPlan);
 							}
 							currentPlan = processTestPlan(token);
@@ -177,10 +186,11 @@ public class TestPlanReader {
 						}
 					}					
 				}
-				
 			}
-			
 			scnr.close();
+			if(testPlans.size() == 0) {
+				testPlans.add(currentPlan);
+			}
 			return testPlans;
 		} catch(IOException e) {
 			throw new IllegalArgumentException("Unable to load file.");
