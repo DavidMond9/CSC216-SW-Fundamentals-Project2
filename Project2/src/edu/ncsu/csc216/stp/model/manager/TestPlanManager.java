@@ -167,8 +167,8 @@ public class TestPlanManager {
 				failingTestList.addTestCase(testcase);
 			}
 			currentTestPlan.addTestCase(testcase);
+			isChanged = true;
 		}
-		isChanged = true;
 	}
 	
 	/**
