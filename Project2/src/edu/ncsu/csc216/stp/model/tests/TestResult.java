@@ -58,6 +58,9 @@ public class TestResult {
 	 * @param actualResults the actualResults of the test case
 	 */
 	public void setActualResults(String actualResults) {
+		if(actualResults == null) {
+			throw new IllegalArgumentException("Illegal Argument Exception.");
+		}
 		this.actualResults = actualResults;
 	}
 

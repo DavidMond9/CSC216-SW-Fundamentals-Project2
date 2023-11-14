@@ -21,7 +21,6 @@ public class TestPlanReaderTest {
 		assertEquals(testPlans.size(), 2);
 		assertEquals(testPlans.get(1).getTestPlanName(), "WolfScheduler");
 		assertEquals(testPlans.get(0).getTestPlanName(), "PackScheduler");
-		System.out.println(testPlans.get(1).getTestCasesAsArray()[2][0]);
 		assertEquals(testPlans.get(1).getTestCase(0).getTestCaseId(), "test1");
 		assertEquals(testPlans.get(1).getTestCase(0).getTestType(), "Equivalence Class");
 		assertEquals(testPlans.get(1).getTestCase(0).getTestDescription(), "description" + "\n" + "with multiple lines");
