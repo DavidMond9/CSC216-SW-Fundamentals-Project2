@@ -33,7 +33,7 @@ public class Log<E> implements ILog<E> {
 	@SuppressWarnings("unchecked")
 	public void add(E element) {
 		if (element == null) {
-			throw new NullPointerException();
+			throw new NullPointerException("Cannot add null element.");
 		}
 		if (size >= log.length - 1) {
 			E[] tempList = log;
