@@ -110,6 +110,9 @@ public abstract class AbstractTestPlan {
 	 * @param actualResults actual results of the test case
 	 */
 	public void addTestResult(int idx, boolean passing, String actualResults) {
+		if(idx < 0 || idx >= testList.size()) {
+			throw new IndexOutOfBoundsException("Invalid index.");
+		}
 		testList.get(idx).addTestResult(passing, actualResults);
 
 	}

@@ -14,11 +14,6 @@ public class FailingTestList extends AbstractTestPlan {
 	/** Name of the failing test list */
 	public static final String FAILING_TEST_LIST_NAME = "Failing Tests";
 	/**
-	 * Test list for manager.
-	 */
-	private TestPlanManager failingTestList;
-	
-	/**
 	 * Constructor for the failing test list
 	 */
 	public FailingTestList() {
@@ -41,10 +36,11 @@ public class FailingTestList extends AbstractTestPlan {
 	 * @param name name of the test plan.
 	 */
 	public void setTestPlanName(String name) {
-		super.setTestPlanName(name);
 		if(!name.equalsIgnoreCase(FAILING_TEST_LIST_NAME)) {
 			throw new IllegalArgumentException("The Failing Tests list cannot be edited.");
 		}
+		super.setTestPlanName(name);
+
 	}
 	
 	/**
@@ -69,10 +65,10 @@ public class FailingTestList extends AbstractTestPlan {
 	}
 	
 	/**
-	 * Clears all of TestCases from the test plan manager
+	 * Clears all of TestCases.
 	 */
 	public void clearTests() {
-		for(int i = super.getTestCases().size(); i > 0; i--) {
+		for(int i = super.getTestCases().size() - 1; i >= 0; i--) {
 			super.removeTestCase(i);
 		}
 	}
