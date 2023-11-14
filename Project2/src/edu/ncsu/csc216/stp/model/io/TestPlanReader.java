@@ -84,6 +84,7 @@ public class TestPlanReader {
 							}
 							else {
 								testCase.addTestResult(false, actualRes);
+								currentPlan.addTestCase(testCase);
 								actualRes = "";
 							}
 						}
