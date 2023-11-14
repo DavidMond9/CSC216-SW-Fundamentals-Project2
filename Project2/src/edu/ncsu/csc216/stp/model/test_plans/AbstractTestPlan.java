@@ -36,9 +36,9 @@ public abstract class AbstractTestPlan {
 		if(name == null || "".equals(name)) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
-		if(FailingTestList.FAILING_TEST_LIST_NAME.equals(name)) {
-			throw new IllegalArgumentException("Invalid name.");
-		}
+		//if(FailingTestList.FAILING_TEST_LIST_NAME.equals(name)) {
+		//	throw new IllegalArgumentException("Invalid name.");
+		//}
 		
 		testPlanName = name;
 	}
