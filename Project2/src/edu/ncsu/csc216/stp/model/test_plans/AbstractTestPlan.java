@@ -71,7 +71,7 @@ public abstract class AbstractTestPlan {
 	 */
 	public TestCase removeTestCase(int idx) {
 		if(idx < 0 || idx >= testList.size()) {
-			throw new IndexOutOfBoundsException("Index out of bounds.");
+			throw new IndexOutOfBoundsException("Invalid index.");
 		}
 		TestCase test = testList.remove(idx);
 		return test;
