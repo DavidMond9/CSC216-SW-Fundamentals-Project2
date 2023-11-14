@@ -79,7 +79,7 @@ public abstract class AbstractTestPlan {
 	
 	/**
 	 * Gets the test case at the index
-	 * @param idx index of the test csae
+	 * @param idx index of the test case
 	 * @return the selected test case
 	 */
 	public TestCase getTestCase(int idx) {
@@ -137,7 +137,7 @@ public abstract class AbstractTestPlan {
 		if (testPlanName == null) {
 			if (other.testPlanName != null)
 				return false;
-		} else if (!testPlanName.equals(other.testPlanName))
+		} else if (!testPlanName.toLowerCase().equals(other.testPlanName.toLowerCase()))
 			return false;
 		return true;
 	}

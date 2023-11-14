@@ -36,13 +36,16 @@ public class FailingTestList extends AbstractTestPlan {
 		super.addTestCase(testcase);
 	}
 	
-	
-	//public void setTestPlanName(String name) {
-		//if(!name.toLowerCase().equals(FAILING_TEST_LIST_NAME)) {
-			//throw new IllegalArgumentException("The Failing Tests list cannot be edited.");
-		//}
-		//super.setTestPlanName(name);
-//	}
+	/**
+	 * Sets the test plan name.
+	 * @param name name of the test plan.
+	 */
+	public void setTestPlanName(String name) {
+		if(!name.toLowerCase().equals(FAILING_TEST_LIST_NAME.toLowerCase())) {
+			throw new IllegalArgumentException("The Failing Tests list cannot be edited.");
+		}
+		super.setTestPlanName(name);
+	}
 	
 	/**
 	 * Gets the test cases and the data they hold as a 2D array
@@ -55,7 +58,12 @@ public class FailingTestList extends AbstractTestPlan {
 		for(int i = 0; i < testList.size(); i++) {
 			res[i][0] = super.getTestCase(i).getTestCaseId();
 			res[i][1] = super.getTestCase(i).getTestType();
-			res[i][2] = super.getTestCase(i).getTestPlan().getTestPlanName();
+			if(super.getTestCase(i).getTestPlan() == null) {
+				res[i][2] = "";
+			}
+			else {
+				res[i][2] = super.getTestCase(i).getTestPlan().getTestPlanName();
+			}
 		}	
 		return res;
 	}
