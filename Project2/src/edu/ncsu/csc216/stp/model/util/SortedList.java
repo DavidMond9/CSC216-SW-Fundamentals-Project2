@@ -113,10 +113,8 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			front = new ListNode(element, front);
 		} else {
 			ListNode current = front;
-			if(current.next != null) {
-				while (current != null && current.next.data.compareTo(element) < 0) {
-					current = current.next;
-				}
+			while (current.next != null && current.next.data.compareTo(element) < 0) {
+				current = current.next;
 			}
 			current.next = new ListNode(element, current.next);
 		}
