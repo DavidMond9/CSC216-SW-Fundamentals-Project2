@@ -89,7 +89,6 @@ public class TestPlanManager {
 		String[] res = new String[testPlans.size()];
 		for(int i = 0; i < testPlans.size(); i++) {
 			res[i] = testPlans.get(i).getTestPlanName();
-			System.out.println(res[i]);
 		}
 		return res;
 	}

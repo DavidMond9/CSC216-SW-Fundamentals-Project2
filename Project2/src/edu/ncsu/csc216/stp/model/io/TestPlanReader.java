@@ -44,63 +44,141 @@ public class TestPlanReader {
 					// call testplan, pass in token
 			Scanner scnr = new Scanner(fileContent);
 			scnr.useDelimiter("\\r?\\n?[!]");
+			String actualRes = "";
+			TestPlan currentPlan = null;
 			while (scnr.hasNext()) {
 				//Get the plan 
-				String planString = scnr.next();
-				
+				String planString = scnr.next();				
 				String[] planLines = planString.split("\r?\n|$");
-				
 				//Fields for testPlan data
-				TestPlan plan = null;
 				TestCase testCase = new TestCase("temp", "temp", "temp", "temp");
 				Log<String> results = new Log<String>();
-				
+				String descLine = "";
+				String expectedRes = "";
+				String last = "";
+				int count = 0;
 				for (String token: planLines) {
-					
-					String expResults = "";
-					//Get the plan name
-					plan = processTestPlan(token);
+					count += 1;
 					if (token.startsWith("#")) {
 						token = token.substring(1);
 						token = token.trim();
-						String testCaseId = token;
+						String testCaseId = token.substring(0, token.indexOf(','));
+						String testType = token.substring(token.indexOf(',') + 1);
 						testCase.setTestCaseId(testCaseId);
+						testCase.setTestType(testType);
 					} 
-					else if (token.startsWith("*") && testCase.getTestDescription() != null) {
+					else if (token.startsWith("*") && !"".equals(descLine)) {
+						testCase.setTestDescription(descLine);
 						token = token.substring(1);
 						token = token.trim();
-						expResults += token;
+						expectedRes += token;
+						last = "*";
 					}
 					
 					else if (token.startsWith("*")) {
-					token = token.substring(1);
-					token = token.trim();
-					String[] descLine = token.split(",");
-					testCase.setTestDescription(descLine[0]);
+						if("-".equals(last)) {
+							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
+								testCase.addTestResult(true, actualRes);
+								currentPlan.addTestCase(testCase);
+								actualRes = "";
+							}
+							else {
+								testCase.addTestResult(false, actualRes);
+								actualRes = "";
+							}
+						}
+						token = token.substring(1);
+						token = token.trim();
+						descLine = token;
+						last = "*";
 					
 					} 
 					
 					else if (token.startsWith("-")) {
-						token = token.substring(1);
-						token = token.trim();
-						results.add(token);
+						if("*".equals(last)) {
+							testCase.setExpectedResults(expectedRes);
+							expectedRes = "";
+							token = token.substring(1);
+							token = token.trim();
+							actualRes += token;
+							System.out.println(count);
+							if(count == planLines.length && testPlans.size() != 0) {
+								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
+									testCase.addTestResult(true, actualRes);
+								}
+								else {
+									testCase.addTestResult(false, actualRes);
+								}
+								currentPlan.addTestCase(testCase);
+								testPlans.add(currentPlan);
+							}
+						}
+						if("-".equals(last)) {
+							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
+								testCase.addTestResult(true, actualRes);
+							}
+							else {
+								testCase.addTestResult(false, actualRes);
+							}
+							descLine = "";
+							actualRes = "";
+							token = token.substring(1);
+							token = token.trim();
+							actualRes += token;
+							if(count == planLines.length && testPlans.size() != 0) {
+								currentPlan.addTestCase(testCase);
+								testPlans.add(currentPlan);
+							}
+						}
+						
+						last = "-";
 					} 
 					
 					else {
-						token = token.substring(1);
-						token = token.trim();
-						expResults += token;
-					}
-					
-					if(!"".equals(expResults)) {
-						testCase.setExpectedResults(expResults);
-					}
-					
-					plan.addTestCase(testCase);
+						if("*".equals(last) && "temp".equals(testCase.getTestDescription())) {
+							descLine += " " + token;
+						}
+						else if("*".equals(last)) {
+							expectedRes += " " + token;
+						}
+						else if("-".equals(last)) {
+							actualRes += " " + token;
+							if(count == planLines.length && testPlans.size() != 0) {
+								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
+									testCase.addTestResult(true, actualRes);
+								}
+								else {
+									testCase.addTestResult(false, actualRes);
+								}
+								currentPlan.addTestCase(testCase);
+								testPlans.add(currentPlan);
+							}
+						}
+						else {
+							System.out.println(token.substring(1));
+							if(currentPlan != null && !token.substring(1).equals(currentPlan.getTestPlanName())) {
+								System.out.println(actualRes.substring(0, actualRes.indexOf(':')));
+								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
+									testCase.addTestResult(true, actualRes);
+								}
+								else {
+									testCase.addTestResult(false, actualRes);
+								}
+								currentPlan.addTestCase(testCase);
+								testPlans.add(currentPlan);
+							}
+							currentPlan = processTestPlan(token);
+							token = token.substring(1);
+							token = token.trim();
+							descLine = "";
+							expectedRes = "";
+							actualRes = "";
+						}
+					}					
 				}
 				
 			}
-				
+			
 			scnr.close();
 			return testPlans;
 		} catch(IOException e) {
