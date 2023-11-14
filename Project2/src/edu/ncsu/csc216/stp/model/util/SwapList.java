@@ -42,7 +42,11 @@ public class SwapList<E> implements ISwapList<E> {
 	private void checkCapacity(int size) {
 		checkIndex(size);
 		if (size == list.length) {
-			list = (E[]) new Object[list.length + 10];
+			E[] tempList = (E[]) new Object[list.length + 10];
+			for (int i = 0; i < list.length; i++) {
+				tempList[i] = list[i];
+			}
+			list = tempList;
 		}
 	}
 	
