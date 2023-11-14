@@ -125,6 +125,7 @@ public class TestPlanManager {
 	 * @param testPlanName new name of the current test plan
 	 */
 	public void editTestPlan(String testPlanName) {
+
 		if(currentTestPlan instanceof FailingTestList) {
 			throw new IllegalArgumentException("The Failing Tests list may not be edited.");
 		}
