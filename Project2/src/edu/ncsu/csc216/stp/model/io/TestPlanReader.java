@@ -62,10 +62,10 @@ public class TestPlanReader {
 					if (token.startsWith("#")) {
 						if("-".equals(last)) {
 							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-								testCase.addTestResult(true, actualRes);
+								testCase.addTestResult(true, actualRes.substring(4));
 							}
 							else {
-								testCase.addTestResult(false, actualRes);
+								testCase.addTestResult(false, actualRes.substring(4));
 							}
 							currentPlan.addTestCase(testCase);
 							testCase = new TestCase("temp", "temp", "temp", "temp");							actualRes = "";
@@ -112,10 +112,10 @@ public class TestPlanReader {
 							actualRes += token;
 							if(count == planLines.length && testPlans.size() != 0) {
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-									testCase.addTestResult(true, actualRes);
+									testCase.addTestResult(true, actualRes.substring(4));
 								}
 								else {
-									testCase.addTestResult(false, actualRes);
+									testCase.addTestResult(false, actualRes.substring(4));
 								}
 								currentPlan.addTestCase(testCase);
 								testCase = new TestCase("temp", "temp", "temp", "temp"); 
@@ -124,10 +124,10 @@ public class TestPlanReader {
 						}
 						if("-".equals(last)) {
 							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-								testCase.addTestResult(true, actualRes);
+								testCase.addTestResult(true, actualRes.substring(4));
 							}
 							else {
-								testCase.addTestResult(false, actualRes);
+								testCase.addTestResult(false, actualRes.substring(4));
 							}
 							descLine = "";
 							actualRes = "";
@@ -155,10 +155,10 @@ public class TestPlanReader {
 							actualRes += " " + token;
 							if(count == planLines.length && testPlans.size() != 0) {
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-									testCase.addTestResult(true, actualRes);
+									testCase.addTestResult(true, actualRes.substring(4));
 								}
 								else {
-									testCase.addTestResult(false, actualRes);
+									testCase.addTestResult(false, actualRes.substring(4));
 								}
 								currentPlan.addTestCase(testCase);
 								testCase = new TestCase("temp", "temp", "temp", "temp");
@@ -168,10 +168,10 @@ public class TestPlanReader {
 						else {
 							if(currentPlan != null && !token.substring(1).equals(currentPlan.getTestPlanName())) {
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-									testCase.addTestResult(true, actualRes);
+									testCase.addTestResult(true, actualRes.substring(4));
 								}
 								else {
-									testCase.addTestResult(false, actualRes);
+									testCase.addTestResult(false, actualRes.substring(4));
 								}
 								currentPlan.addTestCase(testCase);
 								testCase = new TestCase("temp", "temp", "temp", "temp");
