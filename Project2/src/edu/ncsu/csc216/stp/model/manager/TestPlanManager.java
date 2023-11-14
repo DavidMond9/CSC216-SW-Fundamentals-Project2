@@ -87,7 +87,7 @@ public class TestPlanManager {
 	 * @return an array of the names of the tests
 	 */
 	public String[] getTestPlanNames() {
-		String[] res = new String[testPlans.size()];
+		String[] res = new String[testPlans.size() + 1];
 		for(int i = 0; i < testPlans.size(); i++) {
 			res[i] = testPlans.get(i).getTestPlanName();
 		}
