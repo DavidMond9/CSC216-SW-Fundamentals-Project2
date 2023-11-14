@@ -29,6 +29,9 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param element element to be added
 	 */
 	public void add(E element) {
+		if (element == null) {
+			throw new NullPointerException("Cannot add null element.");
+		}
 		checkCapacity(size);
 		list[size] = element;
 		size++;
@@ -57,7 +60,7 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	public E remove(int idx) {
 		if (size == 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid index.");
 		}
 		checkIndex(idx);
 		E temp = list[idx];
