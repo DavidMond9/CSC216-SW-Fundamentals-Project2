@@ -70,14 +70,15 @@ public class TestPlanManager {
 	 * @param testPlanName test to be added
 	 */
 	public void addTestPlan(String testPlanName) {
-		//for(int i = 0; i < testPlans.size(); i++) {
-			//String currName = testPlans.get(i).getTestPlanName().toLowerCase();
-			//if(currName == testPlanName || currName == failingTestList.getTestPlanName() ) {
-				//throw new IllegalArgumentException("Invalid name.");
-			//}
-		//}
+		for(int i = 0; i < testPlans.size(); i++) {
+			String currName = testPlans.get(i).getTestPlanName().toLowerCase();
+			if(currName == testPlanName.toLowerCase() || currName == failingTestList.getTestPlanName().toLowerCase() ) {
+				throw new IllegalArgumentException("Invalid name.");
+			}
+		}
 		TestPlan test = new TestPlan(testPlanName);
 		testPlans.add(test);
+		setCurrentTestPlan(testPlanName);
 		isChanged = true;
 	}
 	
@@ -102,7 +103,7 @@ public class TestPlanManager {
 		boolean found = false;
 		for(int i = 0; i < testPlans.size(); i++) {
 			if(testPlans.get(i).getTestPlanName() == testPlanName) {
-				currentTestPlan.setTestPlanName(testPlanName);
+				currentTestPlan = testPlans.get(i);
 				found = true;
 			}
 		}
@@ -124,19 +125,17 @@ public class TestPlanManager {
 	 * @param testPlanName new name of the current test plan
 	 */
 	public void editTestPlan(String testPlanName) {
-		if(currentTestPlan.getTestPlanName().equals(FailingTestList.FAILING_TEST_LIST_NAME)) {
+
+		if(currentTestPlan instanceof FailingTestList) {
 			throw new IllegalArgumentException("The Failing Tests list may not be edited.");
 		}
-		if("Failing Tests".equalsIgnoreCase(testPlanName)) {
+		if("Failing Tests".toLowerCase().equals(testPlanName.toLowerCase())) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
 		for(int i = 0; i < testPlans.size(); i++) {
 			if(testPlans.get(i).getTestPlanName().toLowerCase() == testPlanName.toLowerCase()) {
 				throw new IllegalArgumentException("Invalid name.");
 			}
-		}
-		if (currentTestPlan instanceof TestPlan) {
-			currentTestPlan = (TestPlan) currentTestPlan;
 		}
 		currentTestPlan.setTestPlanName(testPlanName);
 		isChanged = true;	
