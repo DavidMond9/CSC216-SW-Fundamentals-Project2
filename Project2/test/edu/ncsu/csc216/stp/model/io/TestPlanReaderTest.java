@@ -36,7 +36,6 @@ public class TestPlanReaderTest {
 		assertEquals(testPlans.get(1).getTestCase(1).getExpectedResults(), "expected results");
 
 		
-		
 		assertEquals(testPlans.get(1).getTestCase(2).getTestCaseId(), "test3");
 		assertEquals(testPlans.get(1).getNumberOfFailingTests(), 2);
 		

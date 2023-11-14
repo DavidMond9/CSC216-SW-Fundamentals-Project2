@@ -43,7 +43,6 @@ public class SwapList<E> implements ISwapList<E> {
 	 */
 	@SuppressWarnings("unchecked")
 	private void checkCapacity(int size) {
-		checkIndex(size);
 		if (size == list.length) {
 			E[] tempList = (E[]) new Object[list.length + 10];
 			for (int i = 0; i < list.length; i++) {
