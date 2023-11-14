@@ -89,7 +89,12 @@ public class TestPlanManager {
 	public String[] getTestPlanNames() {
 		String[] res = new String[testPlans.size() + 1];
 		for(int i = 0; i < testPlans.size(); i++) {
-			res[i] = testPlans.get(i).getTestPlanName();
+			if(testPlans.get(i).getTestPlanName() == null) {
+				res[i] = "Failing Tests";
+			}
+			else {
+				res[i] = testPlans.get(i).getTestPlanName();
+			}
 		}
 		return res;
 	}
