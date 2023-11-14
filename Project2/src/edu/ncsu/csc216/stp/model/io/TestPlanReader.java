@@ -111,8 +111,12 @@ public class TestPlanReader {
 					
 					else if (token.startsWith("-")) {
 						if("*".equals(last)) {
-							testCase.setExpectedResults(expectedRes);
-							expectedRes = "";
+							if (!"".equals(expectedRes)) {
+								testCase.setExpectedResults(expectedRes);
+								expectedRes = "";
+							}
+							//testCase.setExpectedResults(expectedRes);
+							//expectedRes = "";
 							token = token.substring(1);
 							token = token.trim();
 							actualRes += token;
