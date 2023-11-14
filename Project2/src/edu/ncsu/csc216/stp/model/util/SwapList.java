@@ -52,6 +52,9 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @return the removed element
 	 */
 	public E remove(int idx) {
+		if (idx == size) {
+			throw new IllegalArgumentException("Invalid index.");
+		}
 		checkIndex(idx);
 		E temp = list[idx];
 		for (int i = idx; i < size; i++) {
@@ -66,7 +69,7 @@ public class SwapList<E> implements ISwapList<E> {
 	 * @param idx index to be checked
 	 */
 	private void checkIndex(int idx) {
-		if (idx < 0 || idx >= size) {
+		if (idx < 0 || idx > size) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
 	}
