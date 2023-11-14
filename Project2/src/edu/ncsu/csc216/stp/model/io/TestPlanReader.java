@@ -60,6 +60,24 @@ public class TestPlanReader {
 				for (String token: planLines) {
 					count += 1;
 					if (token.startsWith("#")) {
+						if("-".equals(last)) {
+							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
+								testCase.addTestResult(true, actualRes);
+							}
+							else {
+								testCase.addTestResult(false, actualRes);
+							}
+							currentPlan.addTestCase(testCase);
+							actualRes = "";
+							descLine = "";
+							expectedRes = "";
+						}
+						if("*".equals(last)) {
+							currentPlan.addTestCase(testCase);
+							actualRes = "";
+							descLine = "";
+							expectedRes = "";
+						}
 						token = token.substring(1);
 						token = token.trim();
 						String testCaseId = token.substring(0, token.indexOf(','));
@@ -76,18 +94,6 @@ public class TestPlanReader {
 					}
 					
 					else if (token.startsWith("*")) {
-						if("-".equals(last)) {
-							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-								testCase.addTestResult(true, actualRes);
-								currentPlan.addTestCase(testCase);
-								actualRes = "";
-							}
-							else {
-								testCase.addTestResult(false, actualRes);
-								currentPlan.addTestCase(testCase);
-								actualRes = "";
-							}
-						}
 						token = token.substring(1);
 						token = token.trim();
 						descLine = token;
@@ -102,7 +108,6 @@ public class TestPlanReader {
 							token = token.substring(1);
 							token = token.trim();
 							actualRes += token;
-							System.out.println(count);
 							if(count == planLines.length && testPlans.size() != 0) {
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
 									testCase.addTestResult(true, actualRes);
@@ -156,9 +161,7 @@ public class TestPlanReader {
 							}
 						}
 						else {
-							System.out.println(token.substring(1));
 							if(currentPlan != null && !token.substring(1).equals(currentPlan.getTestPlanName())) {
-								System.out.println(actualRes.substring(0, actualRes.indexOf(':')));
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
 									testCase.addTestResult(true, actualRes);
 								}
@@ -181,6 +184,7 @@ public class TestPlanReader {
 			}
 			
 			scnr.close();
+
 			return testPlans;
 		} catch(IOException e) {
 			throw new IllegalArgumentException("Unable to load file.");
