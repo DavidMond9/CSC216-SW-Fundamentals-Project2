@@ -36,6 +36,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 		if (idx == 0) {
 			current = front;
 			front = front.next;
+			size--;
 			return current.data;
 			
 		} else {
@@ -106,7 +107,7 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 		}
 		
 		if (contains(element)) {
-			throw new IllegalArgumentException("Cannot add duplicate element");
+			throw new IllegalArgumentException("Cannot add duplicate element.");
 		}
 		
 		if (front == null || element.compareTo(front.data) < 0) {
