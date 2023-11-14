@@ -152,7 +152,7 @@ public class TestPlanReader {
 							expectedRes += "\n" + token;
 						}
 						else if("-".equals(last)) {
-							actualRes += " " + token;
+							actualRes += "\n" + token;
 							if(count == planLines.length && testPlans.size() != 0) {
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
 									testCase.addTestResult(true, actualRes.substring(6));
