@@ -32,6 +32,9 @@ public class Log<E> implements ILog<E> {
 	 */
 	@SuppressWarnings("unchecked")
 	public void add(E element) {
+		if (element == null) {
+			throw new NullPointerException();
+		}
 		if (size >= log.length - 1) {
 			E[] tempList = log;
 			log = (E[]) new Object[log.length * 2];
@@ -49,7 +52,7 @@ public class Log<E> implements ILog<E> {
 	 * @return the element at the given index
 	 */
 	public E get(int idx) {
-		if (idx < 0 || idx > size) {
+		if (idx < 0 || idx >= size) {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
 		return log[idx];
