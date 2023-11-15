@@ -110,11 +110,11 @@ public class SortedList<E extends Comparable<E>> implements ISortedList<E> {
 			throw new IllegalArgumentException("Cannot add duplicate element.");
 		}
 		
-		if (front == null || element.compareTo(front.data) > 0) {
+		if (front == null || element.compareTo(front.data) < 0) {
 			front = new ListNode(element, front);
 		} else {
 			ListNode current = front;
-			while (current.next != null && current.next.data.compareTo(element) > 0) {
+			while (current.next != null && current.next.data.compareTo(element) < 0) {
 				current = current.next;
 			}
 			current.next = new ListNode(element, current.next);

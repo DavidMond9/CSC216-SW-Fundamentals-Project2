@@ -19,11 +19,11 @@ public class SortedListTest {
 		sortedList.add(plan);
 		sortedList.add(plan2);
 		assertEquals(sortedList.size(), 2);
-		assertEquals(sortedList.get(0).getTestPlanName(), "plan2");
-		assertEquals(sortedList.get(1).getTestPlanName(), "plan");
+		assertEquals(sortedList.get(0).getTestPlanName(), "plan");
+		assertEquals(sortedList.get(1).getTestPlanName(), "plan2");
 		TestPlan removedPlan = sortedList.remove(1);
-		assertEquals(removedPlan.getTestPlanName(), "plan");
+		assertEquals(removedPlan.getTestPlanName(), "plan2");
 		TestPlan removedPlan2 = sortedList.remove(0);
-		assertEquals(removedPlan2.getTestPlanName(), "plan2");
+		assertEquals(removedPlan2.getTestPlanName(), "plan");
 	}
 }
