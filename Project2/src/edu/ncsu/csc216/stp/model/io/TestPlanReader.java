@@ -133,15 +133,14 @@ public class TestPlanReader {
 							}
 						}
 						if("-".equals(last)) {
-							//if (last.contains(":")) {
-							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-								testCase.addTestResult(true, actualRes.substring(6));
-							}
-							else {
-								testCase.addTestResult(false, actualRes.substring(6));
-							}
-							//}
-							
+							if (!"".equals(actualRes)) {
+								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
+									testCase.addTestResult(true, actualRes.substring(6));
+								}
+								else {
+									testCase.addTestResult(false, actualRes.substring(6));
+								}
+							}							
 							descLine = "";
 							actualRes = "";
 							token = token.substring(1);
