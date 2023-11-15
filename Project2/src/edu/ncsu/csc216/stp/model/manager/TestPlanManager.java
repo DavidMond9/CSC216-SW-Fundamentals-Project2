@@ -144,11 +144,11 @@ public class TestPlanManager {
 			throw new IllegalArgumentException("Invalid name.");
 		}
 		for(int i = 0; i < testPlans.size(); i++) {
-			if(testPlans.get(i).getTestPlanName().toLowerCase() == testPlanName.toLowerCase()) {
+			if(testPlans.get(i).getTestPlanName().toLowerCase().equals(testPlanName.toLowerCase())) {
 				throw new IllegalArgumentException("Invalid name.");
 			}
 		}
-		if(testPlanName.equals(currentTestPlan.getTestPlanName())) {
+		if(testPlanName.toLowerCase().equals(currentTestPlan.getTestPlanName().toLowerCase())) {
 			throw new IllegalArgumentException("Invalid name.");
 		}
 		currentTestPlan.setTestPlanName(testPlanName);
