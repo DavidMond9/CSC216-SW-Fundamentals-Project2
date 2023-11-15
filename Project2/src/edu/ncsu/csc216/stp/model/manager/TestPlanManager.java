@@ -88,18 +88,18 @@ public class TestPlanManager {
 	 * @return an array of the names of the tests
 	 */
 	public String[] getTestPlanNames() {
-		String[] res = new String[testPlans.size() + 2];
-		for(int i = 0; i < testPlans.size() + 1; i++) {
-			if(i == 0) {
-				res[i] = "Failing Tests";
-				System.out.println(res[i]);
+		String[] res = new String[testPlans.size() + 1];
+		for(int i = -1; i < testPlans.size(); i++) {
+			if(i == -1) {
+				res[i + 1] = "Failing Tests";
+				System.out.println(res[i + 1]);
 			}
-			else if(testPlans.get(i - 1).getTestPlanName() == null) {
-				res[i] = "Failing Tests";
+			else if(testPlans.get(i).getTestPlanName() == null) {
+				res[i + 1] = "Failing Tests";
 			}
 			else {
-				res[i] = testPlans.get(i - 1).getTestPlanName();
-				System.out.println(res[i]);
+				res[i + 1] = testPlans.get(i).getTestPlanName();
+				System.out.println(res[i + 1]);
 			}
 		}
 		return res;
