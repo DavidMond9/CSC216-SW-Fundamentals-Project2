@@ -44,9 +44,9 @@ public class TestPlanManager {
 	 * @param file file test plans are loaded from
 	 */
 	public void loadTestPlans(File file) {
+		setCurrentTestPlan("Failing Tests");
 		testPlans = TestPlanReader.readTestPlansFile(file);
 		isChanged = true;
-		setCurrentTestPlan("Failing Tests");
 		getFailingTests();
 	}
 	
