@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Scanner;
 
 /**
@@ -41,6 +40,7 @@ public class TestPlanManagerTest {
 		manager.loadTestPlans(new File(testFile1));
 		manager.saveTestPlans(new File(actRes));
 		checkFiles(expRes, actRes);
+		assertThrows(IllegalArgumentException.class, () -> manager.saveTestPlans(new File("")));
 	}
 	
 	/**
