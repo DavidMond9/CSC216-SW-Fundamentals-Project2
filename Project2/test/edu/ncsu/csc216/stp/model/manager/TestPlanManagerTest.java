@@ -28,10 +28,19 @@ public class TestPlanManagerTest {
 		String[] plans = manager.getTestPlanNames();
 		assertEquals(plans[0], "hello");
 	}
-	
+	@Test
+	void testGetTestPlanNames() {
+		manager.clearTestPlans();
+		manager.addTestPlan("Test Plan");
+		assertEquals(manager.getTestPlanNames()[0], "Test Plan");
+		manager.addTestPlan("Another Test Plan");
+		assertEquals(manager.getTestPlanNames()[0], "Test Plan");
+		assertEquals(manager.getTestPlanNames()[1], "Another Test Plan");
+	}
 	
 	@Test
 	void testEditTestPlan() {
+		manager.clearTestPlans();
 		manager.addTestPlan("newTest");
 		manager.addTestPlan("hello");
 		manager.setCurrentTestPlan("hello");

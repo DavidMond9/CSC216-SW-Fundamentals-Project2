@@ -78,6 +78,7 @@ public class TestPlanManager {
 		}
 		TestPlan test = new TestPlan(testPlanName);
 		testPlans.add(test);
+		System.out.println(testPlans.get(0).getTestPlanName());
 		setCurrentTestPlan(testPlanName);
 		isChanged = true;
 	}
@@ -94,6 +95,7 @@ public class TestPlanManager {
 			}
 			else {
 				res[i] = testPlans.get(i).getTestPlanName();
+				System.out.println(res[i]);
 			}
 		}
 		return res;
