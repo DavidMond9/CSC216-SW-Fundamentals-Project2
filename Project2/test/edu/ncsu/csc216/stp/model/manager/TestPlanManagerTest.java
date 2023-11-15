@@ -1,5 +1,8 @@
 package edu.ncsu.csc216.stp.model.manager;
 import org.junit.jupiter.api.Test;
+
+import edu.ncsu.csc216.stp.model.tests.TestCase;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
@@ -20,11 +23,15 @@ public class TestPlanManagerTest {
 	@Test
 	void testLoadTestPlans() {
 		manager.loadTestPlans(new File(testFile1));
-		assertEquals(2, 1 + 1);
+		assertEquals("PackScheduler", manager.getTestPlanNames()[1]);
+		assertEquals("WolfScheduler", manager.getTestPlanNames()[2]);
+		assertEquals(3, manager.getTestPlanNames().length);
 	}
 	@Test
 	void testSaveTestPlans() {
-		assertEquals(2, 1 + 1);
+		manager.loadTestPlans(new File(testFile1));
+		manager.saveTestPlans(new File("test-files/act-results0.txt"));
+		
 	}
 	@Test
 	void testAddTestPlan() {
@@ -67,4 +74,12 @@ public class TestPlanManagerTest {
 		assertEquals(e1.getMessage(), "The Failing Tests list may not be deleted.");
 	}
 	
+	@Test
+	void testAddTestCase() {
+		manager.addTestPlan("newTest");
+		manager.setCurrentTestPlan("newTest");
+		manager.addTestCase(new TestCase("new", "type", "desc", "exp"));
+		assertTrue(manager.isChanged());
+		assertEquals(1, manager.getCurrentTestPlan().getTestCases().size());
+	}
 }

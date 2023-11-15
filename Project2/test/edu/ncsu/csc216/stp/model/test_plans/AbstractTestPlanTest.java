@@ -40,6 +40,8 @@ public class AbstractTestPlanTest {
 		assertEquals(test1.getTestCase(0).getTestCaseId(), "5");
 		assertEquals(test1.getTestCase(0).getTestType(), "Old");
 		assertEquals(test1.getTestCase(0).getTestDescription(), "Desc");
+		assertThrows(IndexOutOfBoundsException.class, () -> test1.getTestCase(-1));
+		assertThrows(IndexOutOfBoundsException.class, () -> test1.getTestCase(1));
 	}
 	@Test
 	void testEquals() {
@@ -48,6 +50,15 @@ public class AbstractTestPlanTest {
 	@Test 
 	void testHashcode() {
 		assertEquals(test1.hashCode(), 2420426);
+	}
+	
+	@Test
+	void testAddTestResult() {
+		test1.addTestCase(newCase);
+		test1.addTestResult(0, true, "failed");
+		assertEquals("PASS", newCase.getStatus());
+		assertThrows(IndexOutOfBoundsException.class, () -> test1.addTestResult(-1, false, "words"));
+		assertThrows(IndexOutOfBoundsException.class, () -> test1.addTestResult(2, false, "words"));
 	}
 
 }

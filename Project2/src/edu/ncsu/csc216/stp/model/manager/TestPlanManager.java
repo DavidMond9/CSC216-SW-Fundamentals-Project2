@@ -45,7 +45,6 @@ public class TestPlanManager {
 	 */
 	public void loadTestPlans(File file) {
 		testPlans = TestPlanReader.readTestPlansFile(file);
-		System.out.println(testPlans.size());
 		isChanged = true;
 		setCurrentTestPlan("Failing Tests");
 	}
@@ -80,7 +79,6 @@ public class TestPlanManager {
 		}
 		TestPlan test = new TestPlan(testPlanName);
 		testPlans.add(test);
-		System.out.println(testPlans.get(0).getTestPlanName());
 		setCurrentTestPlan(test.getTestPlanName());
 		isChanged = true;
 	}
@@ -94,14 +92,12 @@ public class TestPlanManager {
 		for(int i = -1; i < testPlans.size(); i++) {
 			if(i == -1) {
 				res[i + 1] = "Failing Tests";
-				System.out.println(res[i + 1]);
 			}
 			else if(testPlans.get(i).getTestPlanName() == null) {
 				res[i + 1] = "Failing Tests";
 			}
 			else {
 				res[i + 1] = testPlans.get(i).getTestPlanName();
-				System.out.println(res[i + 1]);
 			}
 		}
 		return res;

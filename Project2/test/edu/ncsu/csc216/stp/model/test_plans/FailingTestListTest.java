@@ -35,6 +35,10 @@ public class FailingTestListTest {
 	 */
 	TestPlan plan2 = new TestPlan("plan2");
 
+	@Test
+	void testSetTestPlanName() {
+		assertThrows(IllegalArgumentException.class, () -> test1.setTestPlanName("test"));
+	}
 	
 	@Test
 	void testAddTestCase() {
@@ -42,6 +46,7 @@ public class FailingTestListTest {
 		test1.addTestCase(newCase);
 		assertEquals(test1.getTestCase(0).getTestCaseId(), "5");
 	}
+	
 	@Test
 	void testGetTestCasesAsArray() {
 		newCase.setTestPlan(plan);
@@ -55,4 +60,11 @@ public class FailingTestListTest {
 		assertEquals(arr[0][1], "Old");
 	}
 
+	@Test
+	void testClearTests() {
+		test1.addTestCase(newCase);
+		test1.addTestCase(newCase2);
+		test1.clearTests();
+		assertEquals(0, test1.getTestCases().size());
+	}
 }
