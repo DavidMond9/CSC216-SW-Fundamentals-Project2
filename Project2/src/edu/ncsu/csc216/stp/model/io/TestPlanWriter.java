@@ -31,9 +31,9 @@ public class TestPlanWriter {
 					System.out.println(plan.getTestCases().get(j).toString());
 				}
 				
-				if (i != list.size() - 1) {
-					fileWriter.print("\n");
-				}
+				//if (i != list.size() - 1) {
+				//	fileWriter.print("\n");
+				//}
 			}
 			
 			fileWriter.close();
