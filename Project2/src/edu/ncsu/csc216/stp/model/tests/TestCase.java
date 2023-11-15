@@ -157,7 +157,10 @@ public class TestCase {
 	 * @return true if the test case is passing, false otherwise
 	 */
 	public boolean isTestCasePassing() {
-		return testResults.size() == 0;
+		if(testResults.size() == 0) {
+			return false;
+		}
+		return testResults.get(testResults.size() - 1).isPassing();
 	}
 	
 	/**
