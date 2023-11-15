@@ -65,7 +65,7 @@ public class TestCaseTest {
 		TestPlan testPlan = new TestPlan("test");
 		test.setTestPlan(testPlan);
 		test.addTestResult(false, "fail");
-		assertEquals("# 1,type\n* description\n- FAIL: fail\n", test.toString());
+		assertEquals("# 1,type\n* description\n* exp\n- FAIL: fail\n", test.toString());
 	}
 	
 	@Test

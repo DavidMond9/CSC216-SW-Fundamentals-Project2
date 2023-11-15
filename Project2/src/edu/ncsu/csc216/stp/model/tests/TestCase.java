@@ -196,7 +196,7 @@ public class TestCase {
 	public String toString() {
 		String test = "";
 		test += "# " + getTestCaseId() + "," + getTestType() + "\n* " + getTestDescription() +
-				"\n" + getExpectedResults() + "\n" + getActualResultsLog();
+				"\n" + "* " + getExpectedResults() + "\n" + getActualResultsLog();
 		return test;
 	}
 
