@@ -5,11 +5,25 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * SwapListTest tests the SwapList class and the ISwapList interface.
+ */
 public class SwapListTest {
-	
+	/**
+	 * A test SwapList of type TestCase to test the methods of the SwapList class.
+	 */
 	SwapList<TestCase> swapList = new SwapList();
+	/**
+	 * A test TestCase to use with the methods of SwapList.
+	 */
 	TestCase newCase = new TestCase("5", "Old", "Desc", "results");
+	/**
+	 * A test TestCase to use with the methods of SwapList.
+	 */
 	TestCase newCase2 = new TestCase("6", "Back", "Description", "res");
+	/**
+	 * A test TestCase to use with the methods of SwapList.
+	 */
 	TestCase newCase3 = new TestCase("7", "New", "D", "a");
 	
 	@Test

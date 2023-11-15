@@ -6,13 +6,34 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * SortedListTest tests the SortedList class and the ISortedList interface.
+ */
 public class SortedListTest {
 	
+	/**
+	 * A SortedList of type TestPlan to test out the methods in sorted list.
+	 */
 	SortedList<TestPlan> sortedList = new SortedList();
+	/**
+	 * TestCase 1 to test with the sorted list.
+	 */
 	TestCase newCase = new TestCase("5", "Old", "Desc", "results");
+	/**
+	 * TestCase 2 to test with the sorted list.
+	 */
 	TestCase newCase2 = new TestCase("6", "Back", "Description", "res");
+	/**
+	 * TestCase 3 to test with the sorted list.
+	 */
 	TestCase newCase3 = new TestCase("7", "New", "D", "a");
+	/**
+	 * TestPlan 1 to test with the sorted list.
+	 */
 	TestPlan plan = new TestPlan("plan");
+	/**
+	 * TestPlan 2 to test with the sorted list.
+	 */
 	TestPlan plan2 = new TestPlan("plan2");
 	@Test
 	void testAddAndRemove() {

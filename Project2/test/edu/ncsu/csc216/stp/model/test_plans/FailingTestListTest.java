@@ -5,14 +5,34 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * FailingTestListTest class tests the FailingTestList and of all its methods.
+ */
 public class FailingTestListTest {
 	
+	/**
+	 * A test FailingTestList to test out the methods of FailingTestList.
+	 */
 	FailingTestList test1 = new FailingTestList();
+	/**
+	 * Another test FailingTestList to test out the methods of FailingTestList.
+	 */
 	FailingTestList test2 = new FailingTestList();
-
+	/**
+	 * TestCase to test with the failing test list.
+	 */
 	TestCase newCase = new TestCase("5", "Old", "Desc", "results");
+	/**
+	 * TestCase 2 to test with the failing test list.
+	 */
 	TestCase newCase2 = new TestCase("6", "Back", "Description", "res");
+	/**
+	 * TestPlan 1 to test with the failing test list.
+	 */
 	TestPlan plan = new TestPlan("plan");
+	/**
+	 * TestPlan 2 to test with the failing test list.
+	 */
 	TestPlan plan2 = new TestPlan("plan2");
 
 	

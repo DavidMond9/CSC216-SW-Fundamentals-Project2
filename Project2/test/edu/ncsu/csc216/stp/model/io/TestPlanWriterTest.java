@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 
+/**
+ * TestPlanWriterTest tests the TestPlanWriter class.
+ */
 public class TestPlanWriterTest {
 	@Test
 	void testWriteTestPlanFile(){

@@ -8,7 +8,6 @@ import java.io.FileInputStream;
 import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
 import edu.ncsu.csc216.stp.model.tests.TestCase;
 import edu.ncsu.csc216.stp.model.util.ISortedList;
-import edu.ncsu.csc216.stp.model.util.Log;
 import edu.ncsu.csc216.stp.model.util.SortedList;
 
 /**
@@ -51,8 +50,6 @@ public class TestPlanReader {
 				//Get the plan 
 				String planString = scnr.next();				
 				String[] planLines = planString.split("\r?\n|$");
-				//Fields for testPlan data
-				Log<String> results = new Log<String>();
 				String descLine = "";
 				String expectedRes = "";
 				String last = "";

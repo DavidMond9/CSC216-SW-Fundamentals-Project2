@@ -1,15 +1,20 @@
 package edu.ncsu.csc216.stp.model.manager;
 import org.junit.jupiter.api.Test;
-
-import edu.ncsu.csc216.stp.model.test_plans.TestPlan;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 
+/**
+ * TestPlanManagerTest tests the TestPlanManager class.
+ */
 public class TestPlanManagerTest {
-	
+	/**
+	 * Manager field to test the manager methods.
+	 */
 	private static TestPlanManager manager = new TestPlanManager();
+	/**
+	 * Test file to load and save in for the manager.
+	 */
 	String testFile1 = "test-files/test-plans0.txt";
 	
 	@Test

@@ -5,11 +5,22 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * AbstractTestPlanTest class tests AbstractTestPlan and all of its methods.
+ */
 public class AbstractTestPlanTest {
 	
+	/**
+	 * Abstract Test Plan 1 to test the methods.
+	 */
 	AbstractTestPlan test1 = new TestPlan("Name");
+	/**
+	 * Abstract Test Plan 1 to test the methods.
+	 */
 	AbstractTestPlan test2 = new TestPlan("Name2");
-
+	/**
+	 * TestCase to test with the abstract test plan.
+	 */
 	TestCase newCase = new TestCase("5", "Old", "Desc", "results");
 	
 	@Test
