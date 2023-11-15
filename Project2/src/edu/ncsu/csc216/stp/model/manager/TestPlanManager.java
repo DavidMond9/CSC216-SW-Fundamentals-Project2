@@ -113,7 +113,7 @@ public class TestPlanManager {
 	public void setCurrentTestPlan(String testPlanName) {
 		boolean found = false;
 		for(int i = 0; i < testPlans.size(); i++) {
-			if(testPlans.get(i).getTestPlanName() == testPlanName) {
+			if(testPlans.get(i).getTestPlanName().equals(testPlanName)) {
 				currentTestPlan = testPlans.get(i);
 				found = true;
 			}
