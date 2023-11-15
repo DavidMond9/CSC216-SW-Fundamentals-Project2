@@ -72,7 +72,7 @@ public class TestPlanManager {
 	public void addTestPlan(String testPlanName) {
 		for(int i = 0; i < testPlans.size(); i++) {
 			String currName = testPlans.get(i).getTestPlanName().toLowerCase();
-			if(currName == testPlanName.toLowerCase() || currName == failingTestList.getTestPlanName().toLowerCase() ) {
+			if(currName.toLowerCase() == testPlanName.toLowerCase() || currName.toLowerCase() == failingTestList.getTestPlanName().toLowerCase() ) {
 				throw new IllegalArgumentException("Invalid name.");
 			}
 		}
