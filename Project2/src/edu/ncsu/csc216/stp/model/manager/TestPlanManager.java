@@ -45,6 +45,7 @@ public class TestPlanManager {
 	 */
 	public void loadTestPlans(File file) {
 		testPlans = TestPlanReader.readTestPlansFile(file);
+		isChanged = true;
 		setCurrentTestPlan("Failing Tests");
 	}
 	

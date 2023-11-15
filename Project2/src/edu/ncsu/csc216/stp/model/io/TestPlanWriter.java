@@ -24,10 +24,11 @@ public class TestPlanWriter {
 			PrintStream fileWriter = new PrintStream(file);
 			for (int i = 0; i < list.size(); i++) {
 				TestPlan plan = list.get(i);
-				fileWriter.print("!" + plan.getTestPlanName() + "\n");
+				fileWriter.print("! " + plan.getTestPlanName() + "\n");
 				
 				for (int j = 0; j < plan.getTestCases().size(); j++) {
 					fileWriter.print(plan.getTestCases().get(j).toString());
+					System.out.println(plan.getTestCases().get(j).toString());
 				}
 				
 				if (i != list.size() - 1) {
