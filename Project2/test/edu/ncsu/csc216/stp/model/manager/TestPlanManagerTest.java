@@ -45,9 +45,10 @@ public class TestPlanManagerTest {
 		manager.clearTestPlans();
 		manager.addTestPlan("newTest");
 		manager.addTestPlan("hello");
+		manager.editTestPlan("now");
 		manager.setCurrentTestPlan("hello");
 		String[] plans = manager.getTestPlanNames();
-		assertEquals(plans[1], "hello");
+		assertEquals(plans[1], "now");
 	}
 	
 	@Test
