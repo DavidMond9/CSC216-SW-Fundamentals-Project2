@@ -29,10 +29,6 @@ public class TestPlanWriter {
 				for (int j = 0; j < plan.getTestCases().size(); j++) {
 					fileWriter.print(plan.getTestCases().get(j).toString());
 				}
-				
-				//if (i != list.size() - 1) {
-				//	fileWriter.print("\n");
-				//}
 			}
 			
 			fileWriter.close();

@@ -24,7 +24,7 @@ public class TestPlanManagerTest {
 	String testFile1 = "test-files/test-plans0.txt";
 	
 	/** Name of file with expected results */
-	String expRes = "test-files/exp-results0.txt";
+	String expRes = "test-files/exp-results0";
 	
 	/** Name of file with actual results */
 	String actRes = "test-files/act-results0.txt";

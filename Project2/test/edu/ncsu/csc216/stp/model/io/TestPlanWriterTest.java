@@ -8,6 +8,9 @@ import edu.ncsu.csc216.stp.model.util.SortedList;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  * TestPlanWriterTest tests the TestPlanWriter class.
@@ -24,7 +27,16 @@ public class TestPlanWriterTest {
 		SortedList<TestPlan> plans = new SortedList<TestPlan>();
 		plans.add(plan);
 		TestPlanWriter.writeTestPlanFile(new File("test-files/act_plans"), plans);
-		assertEquals(2, 1 + 1);
-		
+		try {
+			Scanner scan = new Scanner(new FileInputStream("test-files/act_plans"));
+			int size = 0;
+			while (scan.hasNextLine()) {
+				scan.nextLine();
+				size++;
+			}
+			assertEquals(4, size);
+		} catch (FileNotFoundException e) {
+			fail();
+		}
 	}
 }
