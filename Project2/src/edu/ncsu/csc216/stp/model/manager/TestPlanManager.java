@@ -210,6 +210,7 @@ public class TestPlanManager {
 	}
 	
 	private void getFailingTests() {
+		failingTestList = new FailingTestList();
 		for (int i = 0; i < testPlans.size(); i++) {
 			for (int j = 0; j < testPlans.get(i).getTestCases().size(); j++) {
 				if (!testPlans.get(i).getTestCase(j).isTestCasePassing()) {
