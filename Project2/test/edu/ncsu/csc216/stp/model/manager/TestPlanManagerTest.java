@@ -6,6 +6,9 @@ import edu.ncsu.csc216.stp.model.tests.TestCase;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Scanner;
 
 /**
  * TestPlanManagerTest tests the TestPlanManager class.
@@ -20,6 +23,12 @@ public class TestPlanManagerTest {
 	 */
 	String testFile1 = "test-files/test-plans0.txt";
 	
+	/** Name of file with expected results */
+	String expRes = "test-files/exp-results0.txt";
+	
+	/** Name of file with actual results */
+	String actRes = "test-files/act-results0.txt";
+	
 	@Test
 	void testLoadTestPlans() {
 		manager.loadTestPlans(new File(testFile1));
@@ -30,9 +39,30 @@ public class TestPlanManagerTest {
 	@Test
 	void testSaveTestPlans() {
 		manager.loadTestPlans(new File(testFile1));
-		manager.saveTestPlans(new File("test-files/act-results0.txt"));
-		
+		manager.saveTestPlans(new File(actRes));
+		checkFiles(expRes, actRes);
 	}
+	
+	/**
+	 * Helper method to compare two files for the same contents
+	 * @param expFile expected output
+	 * @param actFile actual output
+	 */
+	private void checkFiles(String expFile, String actFile) {
+		try (Scanner expScanner = new Scanner(new File(expFile));
+			 Scanner actScanner = new Scanner(new File(actFile));) {
+			
+			while (expScanner.hasNextLine()) {
+				assertEquals(expScanner.nextLine(), actScanner.nextLine());
+			}
+			
+			expScanner.close();
+			actScanner.close();
+		} catch (IOException e) {
+			fail("Error reading files.");
+		}
+	}
+	
 	@Test
 	void testAddTestPlan() {
 		manager.clearTestPlans();
