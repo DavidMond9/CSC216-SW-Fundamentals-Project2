@@ -131,7 +131,6 @@ public class TestPlanReader {
 						}
 						if("-".equals(last)) {
 							if (actualRes.contains(":")) {
-								System.out.println(actualRes + "a");
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
 									testCase.addTestResult(true, actualRes.substring(6));
 								}
