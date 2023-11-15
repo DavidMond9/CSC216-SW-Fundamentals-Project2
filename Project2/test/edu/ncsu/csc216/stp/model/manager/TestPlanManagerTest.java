@@ -26,16 +26,18 @@ public class TestPlanManagerTest {
 		manager.clearTestPlans();
 		manager.addTestPlan("hello");
 		String[] plans = manager.getTestPlanNames();
-		assertEquals(plans[0], "hello");
+		assertEquals(plans[0], "Failing Tests");
+		assertEquals(plans[1], "hello");
+
 	}
 	@Test
 	void testGetTestPlanNames() {
 		manager.clearTestPlans();
 		manager.addTestPlan("Test Plan");
-		assertEquals(manager.getTestPlanNames()[0], "Test Plan");
+		assertEquals(manager.getTestPlanNames()[0], "Failing Tests");
 		manager.addTestPlan("Another Test Plan");
-		//assertEquals(manager.getTestPlanNames()[0], "Test Plan");
-		//assertEquals(manager.getTestPlanNames()[1], "Another Test Plan");
+		assertEquals(manager.getTestPlanNames()[2], "Test Plan");
+		assertEquals(manager.getTestPlanNames()[1], "Another Test Plan");
 	}
 	
 	@Test
@@ -46,7 +48,7 @@ public class TestPlanManagerTest {
 		manager.setCurrentTestPlan("hello");
 		manager.editTestPlan("newTest");
 		String[] plans = manager.getTestPlanNames();
-		assertEquals(plans[0], "newTest");
+		assertEquals(plans[1], "newTest");
 	}
 	
 	@Test
