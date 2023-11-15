@@ -43,7 +43,7 @@ public class AbstractTestPlanTest {
 	}
 	@Test
 	void testEquals() {
-		assertFalse(test1.equals(test2));
+		assertNotEquals(test1, test2);
 	}
 	@Test 
 	void testHashcode() {

@@ -14,7 +14,7 @@ public class SortedListTest {
 	/**
 	 * A SortedList of type TestPlan to test out the methods in sorted list.
 	 */
-	SortedList<TestPlan> sortedList = new SortedList();
+	SortedList<TestPlan> sortedList = new SortedList<TestPlan>();
 	/**
 	 * TestCase 1 to test with the sorted list.
 	 */

@@ -12,7 +12,7 @@ public class SwapListTest {
 	/**
 	 * A test SwapList of type TestCase to test the methods of the SwapList class.
 	 */
-	SwapList<TestCase> swapList = new SwapList();
+	SwapList<TestCase> swapList = new SwapList<TestCase>();
 	/**
 	 * A test TestCase to use with the methods of SwapList.
 	 */

@@ -38,6 +38,7 @@ public class FailingTestListTest {
 	
 	@Test
 	void testAddTestCase() {
+		newCase.addTestResult(false, "failed");
 		test1.addTestCase(newCase);
 		assertEquals(test1.getTestCase(0).getTestCaseId(), "5");
 	}
@@ -45,6 +46,8 @@ public class FailingTestListTest {
 	void testGetTestCasesAsArray() {
 		newCase.setTestPlan(plan);
 		newCase2.setTestPlan(plan2);
+		newCase2.addTestResult(false, "failed2");
+		newCase.addTestResult(false, "failed");
 		test1.addTestCase(newCase);
 		test1.addTestCase(newCase2);
 		String[][] arr = test1.getTestCasesAsArray();
