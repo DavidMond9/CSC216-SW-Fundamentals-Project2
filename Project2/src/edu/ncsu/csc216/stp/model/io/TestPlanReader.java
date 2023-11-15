@@ -68,7 +68,7 @@ public class TestPlanReader {
 								testCase.addTestResult(false, actualRes.substring(6));
 							}
 							currentPlan.addTestCase(testCase);
-							testCase = new TestCase("temp", "temp", "temp", "temp");							actualRes = "";
+							testCase = new TestCase("temp", "temp", "temp", "temp");							
 							actualRes = "";
 							descLine = "";
 							expectedRes = "";
@@ -76,7 +76,7 @@ public class TestPlanReader {
 						if("*".equals(last)) {
 							testCase.setExpectedResults(expectedRes);
 							currentPlan.addTestCase(testCase);
-							testCase = new TestCase("temp", "temp", "temp", "temp");							actualRes = "";
+							testCase = new TestCase("temp", "temp", "temp", "temp");							
 							descLine = "";
 							expectedRes = "";
 						}
@@ -133,14 +133,14 @@ public class TestPlanReader {
 							}
 						}
 						if("-".equals(last)) {
-							if (last.contains(":")) {
-								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
-									testCase.addTestResult(true, actualRes.substring(6));
-								}
-								else {
-									testCase.addTestResult(false, actualRes.substring(6));
-								}
+							//if (last.contains(":")) {
+							if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
+								testCase.addTestResult(true, actualRes.substring(6));
 							}
+							else {
+								testCase.addTestResult(false, actualRes.substring(6));
+							}
+							//}
 							
 							descLine = "";
 							actualRes = "";
