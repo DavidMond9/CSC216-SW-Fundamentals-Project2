@@ -47,6 +47,7 @@ public class TestPlanManager {
 		testPlans = TestPlanReader.readTestPlansFile(file);
 		isChanged = true;
 		setCurrentTestPlan("Failing Tests");
+		getFailingTests();
 	}
 	
 	/**
@@ -81,6 +82,7 @@ public class TestPlanManager {
 		testPlans.add(test);
 		setCurrentTestPlan(test.getTestPlanName());
 		isChanged = true;
+		getFailingTests();
 	}
 	
 	/**
@@ -150,7 +152,8 @@ public class TestPlanManager {
 			throw new IllegalArgumentException("Invalid name.");
 		}
 		currentTestPlan.setTestPlanName(testPlanName);
-		isChanged = true;	
+		isChanged = true;
+		getFailingTests();
 	}
 	
 	/**
@@ -167,6 +170,7 @@ public class TestPlanManager {
 		}
 		currentTestPlan = failingTestList;
 		isChanged = true;
+		getFailingTests();
 	}
 	
 	/**
@@ -180,6 +184,7 @@ public class TestPlanManager {
 			}
 			currentTestPlan.addTestCase(testcase);
 			isChanged = true;
+			getFailingTests();
 		}
 	}
 	
@@ -191,6 +196,7 @@ public class TestPlanManager {
 	 */
 	public void addTestResult(int idx, boolean passing, String actualResult) {
 		currentTestPlan.getTestCase(idx).addTestResult(passing, actualResult);
+		getFailingTests();
 	}
 	
 	/**
@@ -201,5 +207,15 @@ public class TestPlanManager {
 		failingTestList = new FailingTestList();
 		currentTestPlan = failingTestList;
 		isChanged = false;
+	}
+	
+	private void getFailingTests() {
+		for (int i = 0; i < testPlans.size(); i++) {
+			for (int j = 0; j < testPlans.get(i).getTestCases().size(); j++) {
+				if (!testPlans.get(i).getTestCase(j).isTestCasePassing()) {
+					failingTestList.addTestCase(testPlans.get(i).getTestCase(j));
+				}
+			}
+		}
 	}
 }

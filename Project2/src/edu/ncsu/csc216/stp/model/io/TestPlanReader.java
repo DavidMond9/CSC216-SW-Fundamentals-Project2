@@ -134,8 +134,9 @@ public class TestPlanReader {
 								if("PASS".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
 									testCase.addTestResult(true, actualRes.substring(6));
 								}
-								else {
+								else if ("FAIL".equals(actualRes.substring(0, actualRes.indexOf(':')))) {
 									testCase.addTestResult(false, actualRes.substring(6));
+									
 								}
 							}							
 							descLine = "";
