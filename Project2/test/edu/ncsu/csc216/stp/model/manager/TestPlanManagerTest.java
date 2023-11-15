@@ -40,6 +40,7 @@ public class TestPlanManagerTest {
 		String[] plans = manager.getTestPlanNames();
 		assertEquals(plans[0], "Failing Tests");
 		assertEquals(plans[1], "hello");
+		assertThrows(IllegalArgumentException.class, () -> manager.addTestPlan("hello"));
 
 	}
 	@Test
