@@ -79,7 +79,7 @@ public class TestPlanManager {
 		TestPlan test = new TestPlan(testPlanName);
 		testPlans.add(test);
 		System.out.println(testPlans.get(0).getTestPlanName());
-		setCurrentTestPlan(testPlanName);
+		setCurrentTestPlan(test.getTestPlanName());
 		isChanged = true;
 	}
 	
@@ -90,7 +90,8 @@ public class TestPlanManager {
 	public String[] getTestPlanNames() {
 		String[] res = new String[testPlans.size() + 1];
 		for(int i = 0; i < testPlans.size(); i++) {
-			if(testPlans.get(i).getTestPlanName() == null) {
+			
+			if(testPlans.get(i).getTestPlanName() == null || i == 0) {
 				res[i] = "Failing Tests";
 			}
 			else {
