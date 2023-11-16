@@ -30,6 +30,7 @@ public class TestPlanManagerTest {
 	
 	@Test
 	void testLoadTestPlans() {
+		manager.clearTestPlans();
 		manager.loadTestPlans(new File(testFile1));
 		assertEquals("PackScheduler", manager.getTestPlanNames()[1]);
 		assertEquals("WolfScheduler", manager.getTestPlanNames()[2]);
@@ -37,6 +38,7 @@ public class TestPlanManagerTest {
 	}
 	@Test
 	void testSaveTestPlans() {
+		manager.clearTestPlans();
 		manager.loadTestPlans(new File(testFile1));
 		manager.saveTestPlans(new File(actRes));
 		checkFiles(expRes, actRes);

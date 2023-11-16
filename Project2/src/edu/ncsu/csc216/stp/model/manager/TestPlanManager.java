@@ -44,10 +44,27 @@ public class TestPlanManager {
 	 * @param file file test plans are loaded from
 	 */
 	public void loadTestPlans(File file) {
-		setCurrentTestPlan("Failing Tests");
-		testPlans = TestPlanReader.readTestPlansFile(file);
+		ISortedList<TestPlan> newPlans = new SortedList<TestPlan>();
+		newPlans = TestPlanReader.readTestPlansFile(file);
+		
+		if(testPlans.size() == 0) {
+			for(int i = 0; i < newPlans.size(); i++) {
+				testPlans.add(newPlans.get(i));
+			}
+		}
+		else {
+			for(int i = 0; i < newPlans.size(); i++) {
+				for(int j = 0; j < testPlans.size(); j++) {
+					if(!(testPlans.get(j).getTestPlanName().toLowerCase().equals(newPlans.get(i).getTestPlanName().toLowerCase()))) {
+						testPlans.add(newPlans.get(i));
+					}
+				}
+			}
+		}
 		isChanged = true;
 		getFailingTests();
+		setCurrentTestPlan("Failing Tests");
+
 	}
 	
 	/**
