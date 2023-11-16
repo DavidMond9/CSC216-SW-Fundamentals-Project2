@@ -46,5 +46,7 @@ public class SortedListTest {
 		assertEquals(removedPlan.getTestPlanName(), "plan2");
 		TestPlan removedPlan2 = sortedList.remove(0);
 		assertEquals(removedPlan2.getTestPlanName(), "plan");
+		sortedList.add(new TestPlan("a"));
+		assertEquals("a", sortedList.get(0).getTestPlanName());
 	}
 }

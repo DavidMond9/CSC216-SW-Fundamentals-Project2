@@ -11,6 +11,7 @@ public class TestResultTest {
 	void testTestResult() {
 		TestResult test1 = new TestResult(true, "test1");
 		assertEquals("test1", test1.getActualResults());
+		assertTrue(test1.isPassing());
 	}
 	
 	@Test
