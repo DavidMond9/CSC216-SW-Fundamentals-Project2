@@ -30,11 +30,16 @@ public class TestPlanWriterTest {
 		try {
 			Scanner scan = new Scanner(new FileInputStream("test-files/act_plans"));
 			int size = 0;
+			String[] lines = new String[4];
 			while (scan.hasNextLine()) {
-				scan.nextLine();
+				lines[size] = scan.nextLine();
 				size++;
 			}
 			assertEquals(4, size);
+			assertEquals("! one", lines[0]);
+			assertEquals("# one,one", lines[1]);
+			assertEquals("* one", lines[2]);
+			assertEquals("* one", lines[3]);
 		} catch (FileNotFoundException e) {
 			fail();
 		}
