@@ -21,7 +21,6 @@ public interface ISortedList<E extends Comparable<E>> {
 	 * Returns the element from the given index.  The element is
 	 * removed from the list.
 	 * @param idx index to remove element from
-	 * @throws IndexOutOfBoundException if the parameter is out of bounds
 	 * @return element at given index
 	 */
 	E remove(int idx);

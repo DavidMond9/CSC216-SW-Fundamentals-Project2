@@ -21,7 +21,6 @@ public interface ILog<E> {
 	 * Returns the element at the given index.
 	 * @param idx index of the element to retrieve
 	 * @return element at the given index
-	 * @throws IndexOutOfBoundException if the parameter is out of bounds
 	 */
 	E get(int idx);
 	
